@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Escape from Grimwood Hall – A Halloween Escape Game</title>
+<meta name="description" content="English escape game for Year 7: simple present, present progressive, simple past, present perfect, word order and reading.">
+<style>
+/* fb-education Lern-Apps – Core Styles
+   Ruhiges Grundlayout, verspielte Akzente nur in den Aufgaben.
+   Keine externen Schriften oder Ressourcen (Datenschutz, kleine Dateien). */
+
+:root {
+  --bg: #12141c;
+  --bg-2: #181b26;
+  --card: #1f2331;
+  --card-2: #272c3d;
+  --line: #343a4f;
+  --text: #eef0f6;
+  --muted: #a3a9bd;
+  --accent: #f39c3d;      /* Kürbis-Orange */
+  --accent-2: #9d8cff;    /* Geister-Violett */
+  --ok: #4cc38a;
+  --warn: #f5c84b;
+  --bad: #ef6b6b;
+  --radius: 16px;
+  --radius-s: 10px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+h1:focus, h2:focus { outline: none; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  background: radial-gradient(1200px 600px at 50% -200px, #23263a 0%, var(--bg) 60%) fixed, var(--bg);
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+}
+
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 12px; top: 12px; background: var(--accent); color: #000; padding: 8px 12px; border-radius: 8px; z-index: 99; }
+
+/* ---------- Layout ---------- */
+.app { max-width: 920px; margin: 0 auto; padding: 16px 16px 48px; }
+
+.topbar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 10px 14px; margin-bottom: 18px;
+  background: rgba(31,35,49,.75); border: 1px solid var(--line);
+  border-radius: var(--radius); position: sticky; top: 8px; z-index: 10;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.topbar .title { font-weight: 700; letter-spacing: .02em; margin-right: auto; font-size: 16px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--card-2); border: 1px solid var(--line);
+  border-radius: 999px; padding: 4px 12px; font-size: 15px; white-space: nowrap;
+}
+.pill b { font-variant-numeric: tabular-nums; }
+
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px; margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+.card.soft { background: var(--bg-2); box-shadow: none; }
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
+h1 { font-size: clamp(28px, 5vw, 42px); letter-spacing: .01em; }
+h2 { font-size: clamp(22px, 3.6vw, 28px); }
+h3 { font-size: 19px; }
+p { margin: 0 0 12px; }
+.muted { color: var(--muted); }
+.center { text-align: center; }
+.kicker { text-transform: uppercase; letter-spacing: .12em; font-size: 13px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+.big-emoji { font-size: 56px; line-height: 1; margin-bottom: 8px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  appearance: none; border: 1px solid var(--line); background: var(--card-2); color: var(--text);
+  font: inherit; font-weight: 600; padding: 12px 20px; border-radius: 12px; cursor: pointer;
+  min-height: 48px; transition: transform .08s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover { border-color: var(--accent-2); }
+.btn:active { transform: scale(.98); }
+.btn:focus-visible, .opt:focus-visible, .chip:focus-visible, input:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 2px; }
+.btn.primary { background: var(--accent); color: #1b1206; border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.07); }
+.btn.ghost { background: transparent; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.row.end { justify-content: flex-end; }
+.row.center { justify-content: center; }
+
+/* ---------- Speech bubble (Guide-Figur) ---------- */
+.guide { display: flex; gap: 14px; align-items: flex-start; margin: 14px 0; }
+.guide .avatar { font-size: 40px; line-height: 1; flex: 0 0 auto; filter: drop-shadow(0 4px 10px rgba(157,140,255,.35)); }
+.bubble {
+  position: relative; background: var(--card-2); border: 1px solid var(--line);
+  border-radius: 14px; padding: 12px 16px; flex: 1;
+}
+.bubble::before {
+  content: ""; position: absolute; left: -8px; top: 16px; width: 14px; height: 14px;
+  background: var(--card-2); border-left: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  transform: rotate(45deg);
+}
+.bubble .who { font-size: 13px; font-weight: 700; color: var(--accent-2); margin-bottom: 2px; }
+
+/* ---------- Reading texts ---------- */
+.paper {
+  background: #f4ecd8; color: #2b2418; border-radius: 6px; padding: 20px 22px;
+  font-family: Georgia, "Times New Roman", serif; font-size: 18px; line-height: 1.6;
+  box-shadow: 0 6px 18px rgba(0,0,0,.4); transform: rotate(-.4deg); margin: 8px 0 18px;
+}
+.paper p { margin: 0 0 10px; }
+.paper .sign { text-align: right; font-style: italic; }
+.paper.diary { background: #e9e2f5; transform: rotate(.3deg); }
+
+/* ---------- Tasks ---------- */
+.task { border-top: 1px dashed var(--line); padding-top: 16px; margin-top: 16px; }
+.task:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+.task .q { font-weight: 600; margin-bottom: 10px; }
+.task .num { display: inline-block; min-width: 28px; color: var(--accent); font-weight: 800; }
+.task.done .q::after { content: " ✅"; }
+
+.opts { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+.opt {
+  appearance: none; font: inherit; color: var(--text); text-align: left;
+  background: var(--bg-2); border: 2px solid var(--line); border-radius: 12px;
+  padding: 12px 14px; cursor: pointer; min-height: 52px; transition: border-color .15s, background .15s;
+}
+.opt:hover { border-color: var(--accent-2); }
+.opt.right { border-color: var(--ok); background: rgba(76,195,138,.14); }
+.opt.wrong { border-color: var(--bad); background: rgba(239,107,107,.12); animation: shake .35s; }
+.opt[disabled] { cursor: default; }
+
+.gap-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 19px; }
+.gap-input {
+  font: inherit; color: var(--text); background: var(--bg-2); border: 2px solid var(--line);
+  border-radius: 10px; padding: 8px 12px; width: 190px; max-width: 100%;
+}
+.gap-input.right { border-color: var(--ok); }
+.gap-input.wrong { border-color: var(--bad); animation: shake .35s; }
+.hint-verb { color: var(--muted); font-style: italic; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; min-height: 52px; }
+.chip {
+  appearance: none; font: inherit; color: var(--text); cursor: pointer;
+  background: var(--card-2); border: 2px solid var(--line); border-radius: 10px; padding: 8px 14px; min-height: 46px;
+}
+.chip:hover { border-color: var(--accent-2); }
+.chip.used { visibility: hidden; }
+.answer-zone {
+  border: 2px dashed var(--line); border-radius: 12px; padding: 8px; margin-bottom: 10px;
+  min-height: 62px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.answer-zone.right { border-color: var(--ok); border-style: solid; }
+.answer-zone.wrong { border-color: var(--bad); animation: shake .35s; }
+.answer-zone:empty::before { content: attr(data-placeholder); color: var(--muted); font-size: 15px; padding-left: 6px; }
+
+.feedback { margin-top: 10px; border-radius: 10px; padding: 10px 14px; font-size: 16px; display: none; }
+.feedback.show { display: block; }
+.feedback.ok { background: rgba(76,195,138,.14); border: 1px solid rgba(76,195,138,.5); }
+.feedback.tip { background: rgba(245,200,75,.12); border: 1px solid rgba(245,200,75,.45); }
+.feedback.bad { background: rgba(239,107,107,.12); border: 1px solid rgba(239,107,107,.45); }
+
+/* ---------- Code lock ---------- */
+.lock { display: flex; gap: 10px; justify-content: center; margin: 12px 0; }
+.lock input {
+  width: 64px; height: 76px; text-align: center; font: 700 34px var(--mono);
+  color: var(--accent); background: #0d0f15; border: 2px solid var(--line); border-radius: 12px;
+}
+.lock.ok input { border-color: var(--ok); color: var(--ok); }
+
+/* ---------- Toast & confetti ---------- */
+.toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(120px);
+  background: var(--card-2); border: 1px solid var(--accent); color: var(--text);
+  padding: 12px 18px; border-radius: 14px; box-shadow: var(--shadow); z-index: 50;
+  transition: transform .3s ease; max-width: 92vw; text-align: center;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+.progress { height: 8px; background: var(--bg-2); border-radius: 99px; overflow: hidden; border: 1px solid var(--line); }
+.progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent-2), var(--accent)); transition: width .4s ease; }
+
+@keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+@keyframes pop { 0% { transform: scale(.6); opacity: 0; } 70% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.pop { animation: pop .45s ease both; }
+.float { animation: float 3s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ---------- Modal ---------- */
+.modal-back { position: fixed; inset: 0; background: rgba(5,6,10,.7); display: none; align-items: center; justify-content: center; z-index: 40; padding: 16px; }
+.modal-back.show { display: flex; }
+.modal { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; max-width: 520px; width: 100%; box-shadow: var(--shadow); }
+
+.footer-note { color: var(--muted); font-size: 13px; text-align: center; margin-top: 28px; }
+
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .card { padding: 16px; }
+  .lock input { width: 54px; height: 66px; font-size: 28px; }
+}
+
+
+/* ---------- App: Escape from Grimwood Hall ---------- */
+.hero { text-align: center; padding: 28px 18px; }
+.hero h1 { text-transform: uppercase; letter-spacing: .06em; }
+.hero h1 span { color: var(--accent); }
+.hero .sub { color: var(--muted); margin-bottom: 18px; }
+.moon { font-size: 64px; display: inline-block; }
+
+.mode { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.mode .opt { text-align: center; }
+.mode .opt.sel { border-color: var(--accent); background: rgba(243,156,61,.12); }
+.mode .opt .e { font-size: 30px; display: block; }
+
+.map { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.room-tile {
+  appearance: none; font: inherit; color: var(--text); text-align: left; cursor: pointer;
+  background: var(--bg-2); border: 2px solid var(--line); border-radius: 14px; padding: 14px; min-height: 110px;
+  display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, transform .1s;
+}
+.room-tile:hover:not([disabled]) { border-color: var(--accent); transform: translateY(-2px); }
+.room-tile .e { font-size: 30px; }
+.room-tile .n { font-weight: 700; }
+.room-tile .s { font-size: 14px; color: var(--muted); }
+.room-tile.open { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(243,156,61,.15); }
+.room-tile.done { border-color: rgba(76,195,138,.6); }
+.room-tile[disabled] { opacity: .45; cursor: not-allowed; }
+.room-tile.gate { grid-column: 1 / -1; align-items: center; text-align: center; min-height: 90px; }
+
+.shelf { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
+.tile-letter {
+  width: 46px; height: 54px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center;
+  font: 800 26px var(--mono); background: #0d0f15; border: 2px solid var(--line); color: var(--muted);
+}
+.tile-letter.got { color: var(--accent); border-color: var(--accent); }
+
+.scene { font-size: 34px; letter-spacing: 6px; text-align: center; padding: 8px 0 4px; }
+.team-talk { border-left: 4px solid var(--accent-2); background: rgba(157,140,255,.08); padding: 10px 14px; border-radius: 0 10px 10px 0; margin: 12px 0; font-size: 16px; }
+.team-talk b { color: var(--accent-2); }
+
+.match { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.match .col { display: flex; flex-direction: column; gap: 8px; }
+.book {
+  appearance: none; font: 600 18px var(--font); color: var(--text); cursor: pointer; text-align: left;
+  border: 2px solid var(--line); border-radius: 8px 12px 12px 8px; padding: 10px 14px; min-height: 50px;
+  background: linear-gradient(90deg, rgba(0,0,0,.25) 0 8px, var(--bg-2) 8px);
+}
+.book.sel { border-color: var(--accent); background: linear-gradient(90deg, var(--accent) 0 8px, rgba(243,156,61,.12) 8px); }
+.book.right { border-color: var(--ok); background: linear-gradient(90deg, var(--ok) 0 8px, rgba(76,195,138,.12) 8px); cursor: default; }
+.book.wrong { border-color: var(--bad); animation: shake .35s; }
+
+.exit-row { margin-top: 20px; }
+.medal { font-size: 80px; line-height: 1; }
+.stats { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 14px 0; }
+.ghost-btn { appearance: none; background: none; border: 0; cursor: pointer; padding: 0; font-size: 40px; line-height: 1; }
+.ghost-btn:focus-visible { outline: 3px solid var(--accent-2); border-radius: 50%; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+<div class="app">
+  <header class="topbar" id="topbar" hidden>
+    <span class="title">🎃 Grimwood Hall</span>
+    <span class="pill" title="Time">🕰️ <b id="clock">11:15 pm</b></span>
+    <span class="pill" title="Points">⭐ <b id="points">0</b></span>
+    <span class="pill" title="Secret letters">🔑 <b id="lettersCount">0/6</b></span>
+  </header>
+  <main id="main"></main>
+  <p class="footer-note">fb-education.de · Escape from Grimwood Hall · No data is sent to any server.</p>
+</div>
+
+<div class="modal-back" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal" id="modalBox"></div>
+</div>
+
+<script>
+/* fb-education Lern-Apps – Core
+   - SCORM 1.2 (findet die LMS-API automatisch, läuft ohne LMS einfach lokal)
+   - Fortschritt speichern (SCORM suspend_data oder localStorage)
+   - Gestuftes Feedback für Eingaben (Apostroph/Großschreibung, Tippfehler, Grammatik)
+   - Kleine UI-Helfer
+   Keine externen Verbindungen, keine personenbezogenen Daten. */
+(function () {
+  "use strict";
+  var LA = {};
+
+  /* ---------- DOM-Helfer ---------- */
+  LA.$ = function (sel, root) { return (root || document).querySelector(sel); };
+  LA.$$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+  LA.h = function (tag, attrs, children) {
+    var el = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k];
+      if (v === null || v === undefined || v === false) return;
+      if (k === "class") el.className = v;
+      else if (k === "html") el.innerHTML = v;
+      else if (k === "text") el.textContent = v;
+      else if (k.slice(0, 2) === "on") el.addEventListener(k.slice(2), v);
+      else el.setAttribute(k, v === true ? "" : v);
+    });
+    (children || []).forEach(function (c) {
+      if (c === null || c === undefined) return;
+      el.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+    });
+    return el;
+  };
+  LA.shuffle = function (arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  };
+
+  var toastTimer;
+  LA.toast = function (msg, ms) {
+    var t = LA.$("#la-toast");
+    if (!t) { t = LA.h("div", { id: "la-toast", class: "toast", role: "status", "aria-live": "polite" }); document.body.appendChild(t); }
+    t.textContent = msg; t.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove("show"); }, ms || 2600);
+  };
+
+  /* ---------- SCORM 1.2 ---------- */
+  var scorm = { api: null, active: false, start: Date.now() };
+  function findAPI(win) {
+    var tries = 0;
+    while (win && tries < 12) {
+      try { if (win.API) return win.API; } catch (e) { return null; }
+      if (win.parent && win.parent !== win) { win = win.parent; tries++; } else break;
+    }
+    return null;
+  }
+  scorm.init = function () {
+    var api = findAPI(window);
+    if (!api) { try { if (window.opener) api = findAPI(window.opener); } catch (e) { api = null; } }
+    if (!api) return false;
+    try {
+      if (String(api.LMSInitialize("")) === "true") {
+        scorm.api = api; scorm.active = true;
+        var st = scorm.get("cmi.core.lesson_status");
+        if (!st || st === "not attempted") scorm.set("cmi.core.lesson_status", "incomplete");
+        scorm.commit();
+      }
+    } catch (e) { scorm.active = false; }
+    return scorm.active;
+  };
+  scorm.get = function (k) { if (!scorm.active) return ""; try { return String(scorm.api.LMSGetValue(k) || ""); } catch (e) { return ""; } };
+  scorm.set = function (k, v) { if (!scorm.active) return false; try { return String(scorm.api.LMSSetValue(k, String(v))) === "true"; } catch (e) { return false; } };
+  scorm.commit = function () { if (!scorm.active) return; try { scorm.api.LMSCommit(""); } catch (e) {} };
+  function sessionTime() {
+    var s = Math.max(0, Math.round((Date.now() - scorm.start) / 1000));
+    var hh = Math.floor(s / 3600), mm = Math.floor((s % 3600) / 60), ss = s % 60;
+    function p(n, l) { n = String(n); while (n.length < l) n = "0" + n; return n; }
+    return p(hh, 4) + ":" + p(mm, 2) + ":" + p(ss, 2);
+  }
+  scorm.finish = function () {
+    if (!scorm.active || scorm.finished) return;
+    scorm.finished = true;
+    scorm.set("cmi.core.session_time", sessionTime());
+    scorm.set("cmi.core.exit", scorm.exitMode === undefined ? "suspend" : scorm.exitMode);
+    scorm.commit();
+    try { scorm.api.LMSFinish(""); } catch (e) {}
+  };
+  LA.scorm = scorm;
+
+  /* Ergebnis an das LMS melden (Prozent 0–100) */
+  LA.report = function (percent, finished, passMark) {
+    var pct = Math.max(0, Math.min(100, Math.round(percent)));
+    if (!scorm.active) return;
+    scorm.set("cmi.core.score.min", 0);
+    scorm.set("cmi.core.score.max", 100);
+    scorm.set("cmi.core.score.raw", pct);
+    if (finished) scorm.set("cmi.core.lesson_status", pct >= (passMark || 50) ? "passed" : "completed");
+    scorm.commit();
+  };
+
+  /* ---------- Speichern ---------- */
+  LA.store = {
+    load: function (appId) {
+      var raw = "";
+      if (scorm.active) raw = scorm.get("cmi.suspend_data");
+      if (!raw) { try { raw = window.localStorage.getItem("la:" + appId) || ""; } catch (e) { raw = ""; } }
+      if (!raw) return null;
+      try { return JSON.parse(raw); } catch (e) { return null; }
+    },
+    save: function (appId, data) {
+      var raw = JSON.stringify(data);
+      if (scorm.active) { scorm.set("cmi.suspend_data", raw.slice(0, 4000)); scorm.commit(); }
+      try { window.localStorage.setItem("la:" + appId, raw); } catch (e) {}
+    },
+    clear: function (appId) {
+      if (scorm.active) { scorm.set("cmi.suspend_data", ""); scorm.commit(); }
+      try { window.localStorage.removeItem("la:" + appId); } catch (e) {}
+    }
+  };
+
+  /* ---------- Antwortprüfung mit gestuftem Feedback ---------- */
+  function lev(a, b) {
+    var m = a.length, n = b.length, d = [], i, j;
+    for (i = 0; i <= m; i++) { d[i] = [i]; }
+    for (j = 0; j <= n; j++) { d[0][j] = j; }
+    for (i = 1; i <= m; i++) for (j = 1; j <= n; j++) {
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    return d[m][n];
+  }
+  LA.lev = lev;
+  function norm(s) {
+    return String(s || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " ").trim().replace(/[.!?]+$/, "");
+  }
+  function bare(s) { return norm(s).toLowerCase().replace(/'/g, "").replace(/\s+/g, ""); }
+
+  /* item: { answers:[...], wrongForms:{ "form": "hint" }, hint:"allgemeiner Tipp" }
+     Rückgabe: { ok:true } oder { ok:false, type, msg } */
+  LA.checkText = function (input, item) {
+    var given = norm(input);
+    if (!given) return { ok: false, type: "empty", msg: "✏️ Type your answer first." };
+    var answers = item.answers;
+    for (var i = 0; i < answers.length; i++) if (given === norm(answers[i])) return { ok: true };
+    for (i = 0; i < answers.length; i++) if (given.toLowerCase() === norm(answers[i]).toLowerCase()) return { ok: true };
+    // Apostroph / Leerzeichen
+    for (i = 0; i < answers.length; i++) if (bare(given) === bare(answers[i])) {
+      return { ok: false, type: "apostrophe", msg: "🔎 So close! Check the apostrophe (') or the spaces." };
+    }
+    // Typische Grammatikfehler (bekannte falsche Formen)
+    var wf = item.wrongForms || {};
+    var gl = given.toLowerCase();
+    for (var key in wf) if (Object.prototype.hasOwnProperty.call(wf, key) && bare(key) === bare(gl)) {
+      return { ok: false, type: "grammar", msg: "🧠 " + wf[key] };
+    }
+    // Tippfehler
+    for (i = 0; i < answers.length; i++) {
+      var a = norm(answers[i]).toLowerCase();
+      var dist = lev(gl, a);
+      if (dist > 0 && dist <= (a.length > 6 ? 2 : 1)) return { ok: false, type: "spelling", msg: "🔤 Almost! Check your spelling." };
+    }
+    return { ok: false, type: "grammar", msg: "🧠 " + (item.hint || "Not yet. Read the sentence again and try once more.") };
+  };
+
+  window.LA = LA;
+  window.addEventListener("pagehide", function () { scorm.finish(); });
+  window.addEventListener("beforeunload", function () { scorm.finish(); });
+})();
+
+</script>
+<script>
+(function () {
+"use strict";
+var h = LA.h, $ = LA.$;
+var APP_ID = "escape-grimwood-v1";
+var BARNABY = "👻";
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+var ROOMS = [
+  {
+    id: "dorm", emoji: "🛏️", name: "The Dormitory", skill: "Reading",
+    letter: "F",
+    intro: "You wake up in a cold, dark dormitory. The door is locked. 😨 Under your pillow you find an old letter…",
+    teamTalk: "One person reads the letter aloud. Then talk: <i>“I think it's true / false because …”</i>",
+    tip: "Read the letter again, line by line. For the lock: count the beds 🛏️ and the windows 🪟 in the picture. When does Mrs Grimsby lock the door?",
+    text: {
+      cls: "paper",
+      html: "<p>Dear new student,</p>" +
+        "<p>Welcome to Grimwood Hall! Last Halloween I slept in this room, too. Mrs Grimsby locked the door at 8 o'clock, so I couldn't go out. I was hungry and very bored.</p>" +
+        "<p>At 9 o'clock I heard a strange noise under my bed. I was scared, but it was only Barnaby, the school ghost. He was really friendly, and he told me a secret: the key to the door is in the old wardrobe.</p>" +
+        "<p>But the wardrobe has a lock with three numbers:<br>" +
+        "• The first number is the number of beds in this room.<br>" +
+        "• The second number is the number of windows.<br>" +
+        "• The third number is the time when Mrs Grimsby locks the door.</p>" +
+        "<p>Good luck!</p><p class='sign'>Ella</p>"
+    },
+    scene: { label: "Look around the dormitory:", emojis: "🛏️ 🛏️ 🛏️ 🛏️ 🪟 🪟 🚪 🕷️" },
+    tasks: [
+      { type: "mc", binary: true, q: "Ella slept in this dormitory last Halloween.", options: ["True", "False"], answer: 0,
+        hints: { 1: "Look at the second sentence of the letter." } },
+      { type: "mc", binary: true, q: "Ella went to the kitchen because she was hungry.", options: ["True", "False"], answer: 1,
+        hints: { 0: "Read again: could Ella go out of the room?" } },
+      { type: "mc", binary: true, q: "Barnaby was a friendly ghost.", options: ["True", "False"], answer: 0,
+        hints: { 1: "How does Ella describe Barnaby? Look for the word “friendly”." } },
+      { type: "mc", binary: true, q: "The key is under the bed.", options: ["True", "False"], answer: 1,
+        hints: { 0: "Where is the key? Look for the word “key” in the letter." } },
+      { type: "lock", q: "🔒 Open the wardrobe! Enter the three numbers.", code: "428",
+        hints: ["Count the beds 🛏️ and the windows 🪟 in the picture.", "The third number: Mrs Grimsby locked the door at … o'clock.", "Beds: 4 · Windows: 2 · Time: 8 o'clock"] }
+    ],
+    reward: "The wardrobe opens with a creak! In the pocket of an old green jacket you find a key… and a card with a big letter on it."
+  },
+  {
+    id: "class", emoji: "🏫", name: "The Classroom", skill: "Simple present & present progressive",
+    letter: "N",
+    intro: "You sneak into the classroom. On the blackboard Mrs Grimsby has written her rules – but some words are missing. Fill in the gaps, and the secret drawer in her desk will open.",
+    teamTalk: "Take turns: one person types, the other one looks for signal words. Say: <i>“Look, here's a signal word!”</i>",
+    tip: "Signal words help you! 📌 always, never, usually, every … → simple present (he/she/it + -s). 📌 Look!, Listen!, now, at the moment → present progressive (am/is/are + -ing).",
+    tasks: [
+      { type: "gap", before: "At Grimwood Hall, students always", verb: "go", after: "to bed at 8 o'clock.",
+        answers: ["go"], wrongForms: { "goes": "“Students” is plural (they). No -s here!", "are going": "“always” is a signal word for the simple present.", "is going": "“always” is a signal word for the simple present." },
+        hint: "Signal word: “always”. Who? Students = they." },
+      { type: "gap", before: "Look! Mrs Grimsby", verb: "walk", after: "down the corridor right now!",
+        answers: ["is walking", "'s walking"], wrongForms: { "walks": "“Look!” and “right now” → it's happening now. Use am/is/are + -ing.", "walking": "Don't forget the little word before -ing! Mrs Grimsby = she → is …", "are walking": "Mrs Grimsby = she. Is it am, is or are?", "walk": "“Look!” and “right now” → it's happening now. Use am/is/are + -ing." },
+        hint: "Signal words: “Look!” and “right now”." },
+      { type: "gap", before: "The cook", verb: "make", after: "pumpkin soup every Friday. 🎃",
+        answers: ["makes"], wrongForms: { "make": "The cook = he/she. Don't forget the -s!", "is making": "“every Friday” → it happens again and again. Use the simple present.", "maks": "Check your spelling: make + s." },
+        hint: "Signal word: “every Friday”. The cook = he/she." },
+      { type: "gap", before: "Listen! Somebody", verb: "play", after: "the piano in the music room. 🎹",
+        answers: ["is playing", "'s playing"], wrongForms: { "plays": "“Listen!” → it's happening now. Use am/is/are + -ing.", "playing": "Don't forget the little word before -ing! Somebody = he/she → is …", "are playing": "Somebody = he/she. Is it am, is or are?", "play": "“Listen!” → it's happening now. Use am/is/are + -ing." },
+        hint: "Signal word: “Listen!”." },
+      { type: "gap", before: "Barnaby never", verb: "sleep", after: "at night. He's a ghost! 👻",
+        answers: ["sleeps"], wrongForms: { "sleep": "Barnaby = he. Don't forget the -s!", "is sleeping": "“never” is a signal word for the simple present.", "sleeping": "“never” is a signal word for the simple present." },
+        hint: "Signal word: “never”. Barnaby = he." },
+      { type: "gap", before: "Shhh! At the moment the other students", verb: "hide", after: "under their desks.",
+        answers: ["are hiding", "'re hiding"], wrongForms: { "are hideing": "Careful with the spelling: hide → hiding (the -e goes away).", "hideing": "Careful: hide → hiding (the -e goes away). And don't forget are!", "hiding": "Don't forget the little word before -ing! The students = they → are …", "is hiding": "The students = they. Is it am, is or are?", "hide": "“At the moment” → it's happening now. Use am/is/are + -ing.", "hides": "“At the moment” → it's happening now. Use am/is/are + -ing." },
+        hint: "Signal words: “Shhh!” and “at the moment”." }
+    ],
+    reward: "Click! The secret drawer opens. Inside: a piece of chocolate (yum! 🍫) and a card with a big letter on it."
+  },
+  {
+    id: "library", emoji: "📚", name: "The Library", skill: "Irregular verbs (simple past)",
+    letter: "M",
+    intro: "The library is full of old, dusty books. 🕸️ A sign on the door says: <b>“Put every book next to its partner – or the door stays closed!”</b> Match each verb with its simple past form.",
+    teamTalk: "Test each other first: one person says a verb, the other one says the past form. Then match the books!",
+    tip: "Tap a book on the left, then its partner on the right. 💡 Many past forms end in -ought: buy → bought, think → thought. And: write → wrote, take → took.",
+    tasks: [
+      { type: "match", pairs: [["go", "went"], ["see", "saw"], ["take", "took"], ["write", "wrote"], ["find", "found"], ["buy", "bought"], ["think", "thought"], ["eat", "ate"]] }
+    ],
+    reward: "The last book clicks into place, and a secret shelf moves to the side. 😮 Behind it you find a card with a big letter on it."
+  },
+  {
+    id: "dining", emoji: "🍽️", name: "The Dining Hall", skill: "Simple past & present perfect",
+    letter: "U",
+    intro: "The dining hall smells strange. 🤢 The cook has left her notebook on the table. Choose the correct form and find out what's going on in this kitchen!",
+    teamTalk: "Before you click, explain to your partner: <i>“I think it's … because of the signal word …”</i>",
+    tip: "📌 yesterday, last …, … ago, in 2020 → simple past (finished time). 📌 since, for, ever, never, just, already, or a result you can see now → present perfect (have/has + 3rd form).",
+    tasks: [
+      { type: "mc", binary: true, q: "Last Halloween the cook ___ worm spaghetti. 🪱🍝", options: ["cooked", "has cooked"], answer: 0,
+        hints: { 1: "“Last Halloween” is a finished time in the past → simple past." } },
+      { type: "mc", binary: true, q: "“I ___ such a terrible soup in my life!”", options: ["have never eaten", "never ate"], answer: 0,
+        hints: { 1: "“never … in my life” means: up to now → present perfect." } },
+      { type: "mc", binary: true, q: "Yesterday the students ___ the pudding into the bin.", options: ["threw", "have thrown"], answer: 0,
+        hints: { 1: "“Yesterday” → simple past." } },
+      { type: "mc", binary: true, q: "Oh no! Somebody ___ all the cookies – the jar is empty! 🍪", options: ["ate", "has eaten"], answer: 1,
+        hints: { 0: "The result is important now: the jar is empty → present perfect." } },
+      { type: "mc", binary: true, q: "Mrs Grimsby ___ at Grimwood Hall since 1999.", options: ["worked", "has worked"], answer: 1,
+        hints: { 0: "“since” → present perfect." } },
+      { type: "mc", binary: true, q: "Two years ago a student ___ through the kitchen window!", options: ["escaped", "has escaped"], answer: 0,
+        hints: { 1: "“… ago” → simple past." } }
+    ],
+    reward: "You lift the empty cookie jar… and there it is: a card with a big letter on it!"
+  },
+  {
+    id: "office", emoji: "🗄️", name: "Mrs Grimsby's Office", skill: "Word order: questions & negatives",
+    letter: "F",
+    intro: "You're in Mrs Grimsby's office! 😱 She writes all her notes in a secret code: the words are mixed up. Put them in the right order. Quick – before she comes back!",
+    teamTalk: "Read your sentence aloud together. Does it sound right? Say: <i>“Let's try …” / “Are you sure?”</i>",
+    tip: "📌 Questions: (question word) + do/does/did/have/is + subject + verb … 📌 Negatives: subject + don't/doesn't/didn't + verb … Tap a word in the box to take it back.",
+    tasks: [
+      { type: "order", words: ["Did", "you", "see", "the ghost", "yesterday?"], answer: "Did you see the ghost yesterday?",
+        hint: "Questions in the simple past: Did + you + verb …" },
+      { type: "order", words: ["Mrs Grimsby", "doesn't", "like", "noisy", "students."], answer: "Mrs Grimsby doesn't like noisy students.",
+        hint: "Negative: subject + doesn't + verb …" },
+      { type: "order", words: ["Where", "is", "the key", "to", "the gate?"], answer: "Where is the key to the gate?",
+        hint: "The question word comes first: Where + is + …" },
+      { type: "order", words: ["We", "didn't", "eat", "the", "worm soup."], answer: "We didn't eat the worm soup.",
+        hint: "Negative in the simple past: We + didn't + verb …" },
+      { type: "order", words: ["Have", "you", "ever", "met", "a real", "ghost?"], answer: "Have you ever met a real ghost?",
+        hint: "Present perfect question: Have + you + ever + 3rd form …" }
+    ],
+    reward: "The secret code is cracked! In the desk you find a card with a big letter… and a note: <i>“My diary is in the clock tower. – P. G.”</i>"
+  },
+  {
+    id: "tower", emoji: "🕰️", name: "The Clock Tower", skill: "Reading",
+    letter: "I",
+    intro: "You climb up the stairs of the old clock tower. <i>Tick, tock, tick, tock…</i> On a little table you find Mrs Grimsby's diary. Read it carefully – it has an important secret!",
+    teamTalk: "Read the diary together, one paragraph each. Then put the events in order and talk about the answers.",
+    tip: "Look for time words in the diary: “In the morning”, “At lunchtime”, “In the afternoon”, “Now it's evening”. The last paragraph is very important for the big gate! 🚪",
+    text: {
+      cls: "paper diary",
+      html: "<p><b>Saturday, 31st October</b></p>" +
+        "<p>What a terrible day! In the morning, a new student laughed at my hat. But my hat is beautiful! It's black and it has a big purple spider on it.</p>" +
+        "<p>At lunchtime, the cook burnt the pumpkin soup, and the whole school smelled like smoke for hours.</p>" +
+        "<p>In the afternoon, I went to the library. All the books were in the wrong order! I'm sure it was Barnaby. I have lived at Grimwood Hall for 27 years, and that silly ghost has never been quiet for one single day.</p>" +
+        "<p>Now it's evening, and I'm sitting in my favourite armchair with my lovely cat. She is my best friend. Her name is the same as my favourite cake: it's small, round and sweet, and I eat one every morning with my tea. 🧁</p>" +
+        "<p>I always use her name as the secret password for the big gate. Nobody will ever find out!</p>" +
+        "<p class='sign'>P. Grimsby</p>"
+    },
+    tasks: [
+      { type: "sequence", q: "Put the events of Mrs Grimsby's day in the right order.",
+        items: ["A student laughed at Mrs Grimsby's hat.", "The cook burnt the pumpkin soup.", "Mrs Grimsby went to the library.", "Mrs Grimsby sat in her armchair with her cat."],
+        hint: "Look for the time words: morning → lunchtime → afternoon → evening." },
+      { type: "mc", q: "Why was Mrs Grimsby angry in the morning?", options: ["A student laughed at her hat.", "The soup was cold.", "Her cat ran away."], answer: 0,
+        hints: { 1: "Read the paragraph that starts with “In the morning”.", 2: "Read the paragraph that starts with “In the morning”." } },
+      { type: "mc", q: "Who mixed up the books in the library – in Mrs Grimsby's opinion?", options: ["the cook", "Barnaby", "the new student"], answer: 1,
+        hints: { 0: "Look for “I'm sure it was …”.", 2: "Look for “I'm sure it was …”." } },
+      { type: "mc", q: "How long has Mrs Grimsby lived at Grimwood Hall?", options: ["since 27 years", "for 31 years", "for 27 years"], answer: 2,
+        hints: { 0: "Careful! In English we say “for” + a period of time (for 27 years, for two weeks).", 1: "Find the sentence “I have lived at Grimwood Hall …”." } },
+      { type: "mc", q: "What is the secret password for the big gate?", options: ["the name of her hat", "the name of her cat", "“Halloween”"], answer: 1,
+        hints: { 0: "Read the last paragraph again. 🧁", 2: "Read the last paragraph again. 🧁" } }
+    ],
+    reward: "Behind the big clock you find the last card with a big letter on it. Now you have all six letters! 🎉"
+  }
+];
+
+var GATE = { answer: "MUFFIN" };
+
+/* =========================================================
+   STATE
+   ========================================================= */
+var state;
+function freshState() {
+  return { v: 1, mode: "solo", stage: "intro", room: 0, done: [], letters: [], pts: {}, hints: {}, elapsed: 0, finished: false };
+}
+var sessionStart = Date.now();
+var midnightShown = false;
+
+function save() {
+  state.elapsed += Date.now() - sessionStart; sessionStart = Date.now();
+  LA.store.save(APP_ID, state);
+  LA.report(percent(), false);
+}
+function score() {
+  var s = 0; for (var k in state.pts) s += state.pts[k];
+  for (var r in state.hints) if (state.hints[r]) s -= 5;
+  return Math.max(0, s);
+}
+function maxScore() {
+  var n = 0;
+  ROOMS.forEach(function (r) { r.tasks.forEach(function (t) { n += t.type === "match" ? t.pairs.length : 1; }); });
+  return (n + 1) * 10; // +1 für das Tor
+}
+function percent() { return Math.round(score() / maxScore() * 100); }
+function elapsedMs() { return state.elapsed + (Date.now() - sessionStart); }
+
+function setPts(key, wrongTries, opts) {
+  opts = opts || {};
+  var p;
+  if (opts.revealed) p = 0;
+  else if (opts.binary) p = wrongTries === 0 ? 10 : 2;
+  else p = [10, 6, 3][wrongTries] !== undefined ? [10, 6, 3][wrongTries] : 1;
+  state.pts[key] = p;
+  updateBar();
+  return p;
+}
+
+/* =========================================================
+   TOP BAR & CLOCK
+   ========================================================= */
+function updateBar() {
+  $("#points").textContent = score();
+  $("#lettersCount").textContent = state.letters.length + "/6";
+}
+function clockText() {
+  var mins = 15 + Math.floor(elapsedMs() / 60000);
+  if (mins >= 60) return "12:00 am 🕛";
+  return "11:" + (mins < 10 ? "0" : "") + mins + " pm";
+}
+setInterval(function () {
+  if (!state || state.stage === "intro" || state.finished) return;
+  $("#clock").textContent = clockText();
+  if (!midnightShown && 15 + Math.floor(elapsedMs() / 60000) >= 60) {
+    midnightShown = true;
+    LA.toast("🕛 DONG! The clock strikes midnight… Don't worry – Mrs Grimsby is fast asleep. Keep going!", 5000);
+  }
+}, 5000);
+
+/* =========================================================
+   SCREENS
+   ========================================================= */
+var main = $("#main");
+function show(nodes) {
+  main.innerHTML = "";
+  var t = $("#la-toast"); if (t) t.classList.remove("show");
+  nodes.forEach(function (n) { if (n) main.appendChild(n); });
+  window.scrollTo(0, 0);
+  var f = main.querySelector("h1, h2"); if (f) { f.setAttribute("tabindex", "-1"); f.focus({ preventScroll: true }); }
+}
+function guide(text) {
+  return h("div", { class: "guide" }, [
+    h("button", { class: "ghost-btn float", type: "button", "aria-label": "Barnaby, the school ghost", onclick: function () { LA.toast("👻 Boo! Just kidding. I'm here to help you."); } }, [BARNABY]),
+    h("div", { class: "bubble" }, [h("div", { class: "who", text: "Barnaby, the school ghost" }), h("div", { html: text })])
+  ]);
+}
+
+/* ---------- Intro ---------- */
+function screenIntro(saved) {
+  $("#topbar").hidden = true;
+  var modeSel = "solo";
+  var soloBtn, teamBtn;
+  function pick(m) { modeSel = m; soloBtn.classList.toggle("sel", m === "solo"); teamBtn.classList.toggle("sel", m === "team"); teamBox.hidden = m !== "team"; }
+  soloBtn = h("button", { class: "opt sel", type: "button", onclick: function () { pick("solo"); } }, [h("span", { class: "e", text: "🙋" }), "I'm playing alone"]);
+  teamBtn = h("button", { class: "opt", type: "button", onclick: function () { pick("team"); } }, [h("span", { class: "e", text: "👥" }), "We're playing as a team"]);
+  var teamBox = h("div", { class: "team-talk", hidden: true, html: "<b>Team rule:</b> Talk in English! 🇬🇧 Useful phrases: <i>I think it's … · Are you sure? · Let's try … · You're right! · Your turn!</i>" });
+
+  var startBtn = h("button", { class: "btn primary", type: "button", onclick: function () {
+    state = freshState(); state.mode = modeSel; state.stage = "map";
+    sessionStart = Date.now(); save(); screenMap();
+  } }, ["Start the adventure 🗝️"]);
+
+  var resume = null;
+  if (saved && !saved.finished && saved.stage !== "intro") {
+    resume = h("div", { class: "card soft center" }, [
+      h("p", { html: "👀 You've already started this game. You have <b>" + saved.letters.length + " of 6</b> letters." }),
+      h("div", { class: "row center" }, [
+        h("button", { class: "btn primary", type: "button", onclick: function () { state = saved; sessionStart = Date.now(); screenMap(); } }, ["Continue ▶️"]),
+        h("button", { class: "btn ghost", type: "button", onclick: function () { LA.store.clear(APP_ID); screenIntro(null); } }, ["Start again"])
+      ])
+    ]);
+  }
+
+  show([
+    h("section", { class: "card hero" }, [
+      h("div", { class: "moon float", text: "🎃" }),
+      h("div", { class: "kicker", text: "A Halloween escape game · Year 7" }),
+      h("h1", { html: "Escape from <span>Grimwood Hall</span>" }),
+      h("p", { class: "sub", text: "Find six secret letters, open the big gate – and get back to your normal school!" })
+    ]),
+    resume,
+    h("section", { class: "card" }, [
+      h("h2", { text: "Oh no… 😱" }),
+      h("p", { html: "It's Halloween. You laughed too loudly in class – so now you have to spend the weekend at <b>Grimwood Hall</b>, the strictest boarding school in England!" }),
+      h("p", { html: "The headmistress, <b>Mrs Prunella Grimsby</b>, has locked all the doors. She has only one rule: <i>“Nobody leaves Grimwood Hall. NOBODY!”</i>" }),
+      h("p", { html: "But you want to go home to your normal school. Search six rooms, find <b>six secret letters</b> and open the big gate. Can you escape before midnight? 🕛" }),
+      guide("Hello! I'm Barnaby, the school ghost. I've lived here since 1874. Well… “lived”. 😉 Don't worry, I'm very friendly! In every room you can ask me for a tip – but every tip costs <b>5 points</b>."),
+      h("h3", { text: "How do you play?" }),
+      h("div", { class: "mode" }, [soloBtn, teamBtn]),
+      teamBox,
+      h("div", { class: "row end" }, [startBtn])
+    ])
+  ]);
+}
+
+/* ---------- Map ---------- */
+function screenMap() {
+  state.stage = "map"; save();
+  $("#topbar").hidden = false; updateBar(); $("#clock").textContent = clockText();
+  var nextIdx = state.done.length;
+  var tiles = ROOMS.map(function (r, i) {
+    var isDone = state.done.indexOf(r.id) > -1;
+    var isOpen = i === nextIdx;
+    return h("button", { class: "room-tile" + (isDone ? " done" : "") + (isOpen ? " open" : ""), type: "button", disabled: !isDone && !isOpen ? true : null,
+      "aria-label": r.name + (isDone ? " (done)" : isOpen ? "" : " (locked)"),
+      onclick: function () { if (isOpen) screenRoom(i); else if (isDone) LA.toast("✅ You've already solved this room."); } }, [
+      h("span", { class: "e", text: isDone ? "✅" : isOpen ? r.emoji : "🔒" }),
+      h("span", { class: "n", text: (i + 1) + ". " + r.name }),
+      h("span", { class: "s", text: r.skill })
+    ]);
+  });
+  var gateOpen = state.done.length === ROOMS.length;
+  tiles.push(h("button", { class: "room-tile gate" + (gateOpen ? " open" : ""), type: "button", disabled: gateOpen ? null : true,
+    onclick: function () { if (gateOpen) screenGate(); } }, [
+    h("span", { class: "e", text: gateOpen ? "🚪" : "🔒" }),
+    h("span", { class: "n", text: "The Big Gate" }),
+    h("span", { class: "s", text: gateOpen ? "You have all the letters. Open the gate!" : "Find all six letters first." })
+  ]));
+
+  var shelf = h("div", { class: "shelf" }, []);
+  for (var i = 0; i < 6; i++) {
+    var l = state.letters[i];
+    shelf.appendChild(h("span", { class: "tile-letter" + (l ? " got" : ""), text: l || "?" }));
+  }
+
+  var msg = state.done.length === 0
+    ? "This is the map of Grimwood Hall. Start in the dormitory – and be quiet! 🤫"
+    : state.done.length < ROOMS.length
+      ? "Well done! The next room is open now. Keep going! 💪"
+      : "You've got all six letters! Now go to the big gate. 🚪";
+
+  show([
+    h("section", { class: "card" }, [
+      h("div", { class: "kicker", text: "Map" }),
+      h("h2", { text: "Grimwood Hall 🏰" }),
+      guide(msg),
+      h("div", { class: "progress", "aria-hidden": "true" }, [h("i", { style: "width:" + Math.round(state.done.length / ROOMS.length * 100) + "%" })]),
+      h("p", { class: "muted center", style: "margin-top:12px", text: "Your secret letters:" }),
+      shelf
+    ]),
+    h("section", { class: "map" }, tiles)
+  ]);
+}
+
+/* ---------- Room ---------- */
+function screenRoom(idx) {
+  var room = ROOMS[idx];
+  state.stage = "room"; state.room = idx;
+  // Punkte eines abgebrochenen Versuchs in diesem Raum zurücksetzen
+  Object.keys(state.pts).forEach(function (k) { if (k.indexOf(room.id + "-") === 0) delete state.pts[k]; });
+  save(); updateBar();
+
+  var total = room._count, solved = 0;
+  var exitBtn = h("button", { class: "btn primary", type: "button", disabled: true, onclick: function () { finishRoom(idx); } }, ["Leave the room 🚪"]);
+  function onSolved() { solved++; if (solved >= total) { exitBtn.disabled = false; LA.toast("🎉 All done! You can leave the room now."); exitBtn.scrollIntoView({ behavior: "smooth", block: "center" }); } save(); }
+
+  var tipBox = h("div", { class: "feedback tip", role: "status" });
+  var tipBtn = h("button", { class: "btn ghost", type: "button", onclick: function () {
+    if (!state.hints[room.id]) { state.hints[room.id] = true; updateBar(); save(); }
+    tipBox.innerHTML = "👻 <b>Barnaby's tip:</b> " + room.tip; tipBox.classList.add("show");
+    tipBtn.textContent = "👻 Tip (used)";
+  } }, [state.hints[room.id] ? "👻 Tip (used)" : "👻 Ask Barnaby for a tip (−5 ⭐)"]);
+
+  var taskCard = h("section", { class: "card" }, [h("h3", { text: "Your tasks ✍️" })]);
+  room.tasks.forEach(function (t, ti) {
+    var key = room.id + "-" + ti;
+    var node = RENDER[t.type](t, key, onSolved, ti);
+    taskCard.appendChild(node);
+  });
+
+  show([
+    h("section", { class: "card" }, [
+      h("div", { class: "kicker", text: "Room " + (idx + 1) + " of " + ROOMS.length + " · " + room.skill }),
+      h("h2", { text: room.emoji + " " + room.name }),
+      h("p", { html: room.intro }),
+      state.mode === "team" ? h("div", { class: "team-talk", html: "👥 <b>Team talk:</b> " + room.teamTalk }) : null,
+      room.text ? h("div", { class: room.text.cls, html: room.text.html }) : null,
+      room.scene ? h("div", {}, [h("p", { class: "muted", text: room.scene.label }), h("div", { class: "scene", "aria-label": "four beds, two windows, a door and a spider", text: room.scene.emojis })]) : null,
+      h("div", { class: "row" }, [tipBtn, h("button", { class: "btn ghost", type: "button", onclick: screenMap }, ["🗺️ Back to the map"])]),
+      tipBox
+    ]),
+    taskCard,
+    h("div", { class: "row end exit-row" }, [exitBtn])
+  ]);
+}
+
+function finishRoom(idx) {
+  var room = ROOMS[idx];
+  if (state.done.indexOf(room.id) === -1) { state.done.push(room.id); state.letters.push(room.letter); }
+  save(); updateBar();
+  modal([
+    h("div", { class: "center" }, [
+      h("div", { class: "big-emoji pop", text: "🗝️" }),
+      h("h2", { id: "modalTitle", text: "Room solved!" }),
+      h("p", { html: room.reward }),
+      h("div", { class: "shelf" }, [h("span", { class: "tile-letter got pop", text: room.letter })]),
+      h("p", { class: "muted", style: "margin-top:12px", text: "Keep it safe – you'll need it at the big gate." }),
+      h("button", { class: "btn primary", type: "button", onclick: function () { closeModal(); screenMap(); } }, ["Back to the map 🗺️"])
+    ])
+  ]);
+}
+
+/* ---------- Gate ---------- */
+function screenGate() {
+  state.stage = "gate"; save();
+  var key = "gate-0", wrong = 0;
+  var zone = h("div", { class: "answer-zone", "data-placeholder": "Tap the letters…", "aria-live": "polite" });
+  var chips = h("div", { class: "chips" });
+  var fb = h("div", { class: "feedback", role: "status" });
+  LA.shuffle(state.letters).forEach(function (l) { chips.appendChild(makeChip(l, zone)); });
+  var check = h("button", { class: "btn primary", type: "button", onclick: function () {
+    var given = zoneText(zone).replace(/\s/g, "").toUpperCase();
+    if (given.length < 6) { feedback(fb, "tip", "✏️ Use all six letters."); return; }
+    if (given === GATE.answer) {
+      zone.classList.add("right"); setPts(key, wrong); save();
+      setTimeout(screenEnd, 700); return;
+    }
+    wrong++; zone.classList.remove("wrong"); void zone.offsetWidth; zone.classList.add("wrong");
+    var msg = wrong >= 3 ? "👻 Psst… it starts with <b>M</b>, and the cake is small, round and sweet: 🧁" : "🔒 The gate doesn't open. Remember the diary: the cat has the same name as Mrs Grimsby's favourite cake.";
+    feedback(fb, "bad", msg);
+  } }, ["Open the gate 🔓"]);
+  var reset = h("button", { class: "btn ghost", type: "button", onclick: function () { resetZone(zone, chips); fb.classList.remove("show"); } }, ["↩️ Reset"]);
+
+  show([
+    h("section", { class: "card" }, [
+      h("div", { class: "kicker", text: "The final door" }),
+      h("h2", { text: "🚪 The Big Gate" }),
+      h("p", { text: "You run through the dark garden to the big iron gate. It has a lock with letters. 🔤" }),
+      guide("Remember Mrs Grimsby's diary? The password is the <b>name of her cat</b>. Use your six secret letters!"),
+      zone, chips, fb,
+      h("div", { class: "row end", style: "margin-top:12px" }, [reset, check])
+    ])
+  ]);
+}
+
+/* ---------- End ---------- */
+function screenEnd() {
+  state.finished = true; state.stage = "end";
+  state.elapsed += Date.now() - sessionStart; sessionStart = Date.now();
+  var pct = percent();
+  LA.store.save(APP_ID, state);
+  LA.scorm.exitMode = "";
+  LA.report(pct, true, 50);
+  var medal = pct >= 85 ? ["🥇", "Gold"] : pct >= 65 ? ["🥈", "Silver"] : ["🥉", "Bronze"];
+  var mins = Math.max(1, Math.round(state.elapsed / 60000));
+  $("#topbar").hidden = true;
+  show([
+    h("section", { class: "card hero" }, [
+      h("div", { class: "big-emoji pop", text: "🎉" }),
+      h("div", { class: "kicker", text: "You did it!" }),
+      h("h1", { html: "You're <span>free!</span>" }),
+      h("p", { html: "The big gate opens with a loud <b>CREEEAK</b>. You run out into the night – you've escaped from Grimwood Hall!" }),
+      h("p", { html: "On Monday morning you're back at your normal school. Your teacher smiles: <i>“So, how was your weekend at Grimwood Hall?”</i><br>You smile back: <i>“Oh, it was very quiet. Very, very quiet.”</i> 😇" }),
+      guide("Behind the classroom window a little ghost is waving at you… Bye-bye! See you next Halloween! 👋"),
+      h("div", { class: "medal pop", text: medal[0] }),
+      h("h2", { text: medal[1] + " medal" }),
+      h("div", { class: "stats" }, [
+        h("span", { class: "pill", html: "⭐ <b>" + score() + "</b> / " + maxScore() + " points" }),
+        h("span", { class: "pill", html: "📊 <b>" + pct + " %</b>" }),
+        h("span", { class: "pill", html: "⏱️ <b>" + mins + "</b> min" })
+      ]),
+      h("p", { class: "muted", text: pct >= 85 ? "Brilliant! Mrs Grimsby is very, very angry. 😂" : pct >= 65 ? "Great job! Next time, try to get the gold medal." : "You escaped! Play again and try to use fewer tips." }),
+      h("div", { class: "row center" }, [h("button", { class: "btn ghost", type: "button", onclick: function () { LA.store.clear(APP_ID); location.reload(); } }, ["🔁 Play again"])])
+    ])
+  ]);
+}
+
+/* =========================================================
+   TASK RENDERERS
+   ========================================================= */
+function feedback(el, kind, html) { el.className = "feedback show " + kind; el.innerHTML = html; }
+function shake(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+
+var RENDER = {};
+
+/* Multiple choice (inkl. True/False) */
+RENDER.mc = function (t, key, done, i) {
+  var wrong = 0, box = h("div", { class: "task" });
+  var fb = h("div", { class: "feedback", role: "status" });
+  var opts = h("div", { class: "opts" });
+  t.options.forEach(function (o, oi) {
+    var b = h("button", { class: "opt", type: "button", onclick: function () {
+      if (box.classList.contains("done")) return;
+      if (oi === t.answer) {
+        b.classList.add("right");
+        LA.$$(".opt", opts).forEach(function (x) { x.disabled = true; });
+        box.classList.add("done");
+        var p = setPts(key, wrong, { binary: t.binary });
+        feedback(fb, "ok", wrong === 0 ? "✅ Correct! +" + p + " ⭐" : "✅ Yes, that's it! +" + p + " ⭐");
+        done();
+      } else {
+        wrong++; shake(b, "wrong"); b.disabled = true;
+        feedback(fb, "tip", "🤔 " + ((t.hints && t.hints[oi]) || "Not quite. Read again and try once more."));
+      }
+    } }, [o]);
+    opts.appendChild(b);
+  });
+  box.appendChild(h("div", { class: "q", html: "<span class='num'>" + (i + 1) + ".</span> " + t.q }));
+  box.appendChild(opts); box.appendChild(fb);
+  return box;
+};
+
+/* Lückentext mit Eingabe und gestuftem Feedback */
+RENDER.gap = function (t, key, done, i) {
+  var wrong = 0, box = h("div", { class: "task" });
+  var fb = h("div", { class: "feedback", role: "status" });
+  var inp = h("input", { class: "gap-input", type: "text", autocomplete: "off", autocapitalize: "off", spellcheck: "false", "aria-label": "Your answer for: " + t.before + " … " + t.after });
+  var reveal = h("button", { class: "btn ghost", type: "button", hidden: true, onclick: function () {
+    inp.value = t.answers[0]; finish(true);
+  } }, ["👻 Show me the answer"]);
+  function finish(revealed) {
+    inp.disabled = true; inp.classList.remove("wrong"); inp.classList.add("right");
+    checkBtn.disabled = true; reveal.hidden = true; box.classList.add("done");
+    var p = setPts(key, wrong, { revealed: revealed });
+    feedback(fb, "ok", revealed ? "👻 Here's the answer: <b>" + t.answers[0] + "</b>. Read the sentence again and remember it!" : "✅ Correct! +" + p + " ⭐");
+    done();
+  }
+  function check() {
+    if (box.classList.contains("done")) return;
+    var r = LA.checkText(inp.value, t);
+    if (r.ok) { finish(false); return; }
+    if (r.type !== "empty") wrong++;
+    shake(inp, "wrong");
+    feedback(fb, r.type === "spelling" || r.type === "apostrophe" ? "tip" : "bad", r.msg + (r.type !== "empty" ? " Try again!" : ""));
+    if (wrong >= 3) reveal.hidden = false;
+  }
+  var checkBtn = h("button", { class: "btn", type: "button", onclick: check }, ["Check ✔️"]);
+  inp.addEventListener("keydown", function (e) { if (e.key === "Enter") check(); });
+  box.appendChild(h("div", { class: "gap-line" }, [
+    h("span", { class: "num", text: (i + 1) + "." }), h("span", { text: t.before }), inp,
+    h("span", { class: "hint-verb", text: "(" + t.verb + ")" }), h("span", { text: t.after })
+  ]));
+  box.appendChild(h("div", { class: "row", style: "margin-top:10px" }, [checkBtn, reveal]));
+  box.appendChild(fb);
+  return box;
+};
+
+/* Code-Schloss */
+RENDER.lock = function (t, key, done, i) {
+  var wrong = 0, box = h("div", { class: "task" });
+  var fb = h("div", { class: "feedback", role: "status" });
+  var lock = h("div", { class: "lock" });
+  var inputs = [];
+  for (var d = 0; d < t.code.length; d++) {
+    (function (d) {
+      var inp = h("input", { type: "text", inputmode: "numeric", maxlength: "1", autocomplete: "off", "aria-label": "Number " + (d + 1) });
+      inp.addEventListener("input", function () {
+        inp.value = inp.value.replace(/\D/g, "").slice(-1);
+        if (inp.value && inputs[d + 1]) inputs[d + 1].focus();
+      });
+      inp.addEventListener("keydown", function (e) {
+        if (e.key === "Backspace" && !inp.value && inputs[d - 1]) inputs[d - 1].focus();
+        if (e.key === "Enter") check();
+      });
+      inputs.push(inp); lock.appendChild(inp);
+    })(d);
+  }
+  function check() {
+    if (box.classList.contains("done")) return;
+    var v = inputs.map(function (x) { return x.value; }).join("");
+    if (v.length < t.code.length) { feedback(fb, "tip", "✏️ Enter all " + t.code.length + " numbers."); return; }
+    if (v === t.code) {
+      lock.classList.add("ok"); inputs.forEach(function (x) { x.disabled = true; });
+      btn.disabled = true; box.classList.add("done");
+      var p = setPts(key, wrong);
+      feedback(fb, "ok", "🔓 <b>Click!</b> The lock opens! +" + p + " ⭐");
+      done(); return;
+    }
+    wrong++; shake(lock, "wrong");
+    feedback(fb, "bad", "🔒 The lock doesn't open. " + t.hints[Math.min(wrong - 1, t.hints.length - 1)]);
+  }
+  var btn = h("button", { class: "btn primary", type: "button", onclick: check }, ["Open the lock 🔑"]);
+  box.appendChild(h("div", { class: "q", html: "<span class='num'>" + (i + 1) + ".</span> " + t.q }));
+  box.appendChild(lock);
+  box.appendChild(h("div", { class: "row center" }, [btn]));
+  box.appendChild(fb);
+  return box;
+};
+
+/* Zuordnen (Bücher) */
+RENDER.match = function (t, key, done) {
+  var box = h("div", { class: "task" });
+  var fb = h("div", { class: "feedback", role: "status" });
+  var left = h("div", { class: "col" }), right = h("div", { class: "col" });
+  var sel = null, wrongBy = {}, solvedPairs = 0;
+  var subDone = done; // jedes Paar zählt als eine Aufgabe
+  LA.shuffle(t.pairs).forEach(function (p) {
+    var b = h("button", { class: "book", type: "button", "data-inf": p[0], onclick: function () {
+      if (b.classList.contains("right")) return;
+      LA.$$(".book.sel", left).forEach(function (x) { x.classList.remove("sel"); });
+      b.classList.add("sel"); sel = p[0];
+    } }, ["📕 " + p[0]]);
+    left.appendChild(b);
+  });
+  LA.shuffle(t.pairs).forEach(function (p) {
+    var b = h("button", { class: "book", type: "button", onclick: function () {
+      if (b.classList.contains("right")) return;
+      if (!sel) { feedback(fb, "tip", "👈 First tap a verb on the left."); return; }
+      var lb = LA.$(".book[data-inf='" + sel + "']", left);
+      if (p[0] === sel) {
+        lb.classList.remove("sel"); lb.classList.add("right"); b.classList.add("right");
+        var pts = setPts(key + "-" + sel, wrongBy[sel] || 0);
+        feedback(fb, "ok", "✅ " + p[0] + " → <b>" + p[1] + "</b> +" + pts + " ⭐");
+        sel = null; solvedPairs++;
+        if (solvedPairs === t.pairs.length) { box.classList.add("done"); }
+        subDone();
+      } else {
+        wrongBy[sel] = (wrongBy[sel] || 0) + 1; shake(b, "wrong");
+        var target = t.pairs.filter(function (x) { return x[0] === sel; })[0][1];
+        feedback(fb, "bad", "📕 “" + p[1] + "” is not the past form of “" + sel + "”. Hint: it starts with <b>" + target.charAt(0) + "</b> and has " + target.length + " letters.");
+      }
+    } }, ["📗 " + p[1]]);
+    right.appendChild(b);
+  });
+  box.appendChild(h("div", { class: "q", text: "Tap a verb 📕 and then its simple past form 📗." }));
+  box.appendChild(h("div", { class: "match" }, [left, right]));
+  box.appendChild(fb);
+  return box;
+};
+
+/* Wortstellung & Reihenfolge (Chips antippen) */
+function makeChip(label, zone) {
+  var c = h("button", { class: "chip", type: "button" }, [label]);
+  c.addEventListener("click", function () {
+    if (zone.classList.contains("right")) return;
+    if (c.parentNode === zone) { c._home.appendChild(c); }
+    else { c._home = c.parentNode; zone.appendChild(c); }
+    zone.classList.remove("wrong");
+  });
+  return c;
+}
+function zoneText(zone) { return LA.$$(".chip", zone).map(function (c) { return c.textContent; }).join(" "); }
+function resetZone(zone, chips) { LA.$$(".chip", zone).forEach(function (c) { (c._home || chips).appendChild(c); }); zone.classList.remove("wrong", "right"); }
+
+function chipTask(t, key, done, i, opts) {
+  var wrong = 0, box = h("div", { class: "task" });
+  var fb = h("div", { class: "feedback", role: "status" });
+  var zone = h("div", { class: "answer-zone", "data-placeholder": opts.placeholder });
+  if (opts.vertical) zone.style.flexDirection = "column", zone.style.alignItems = "stretch";
+  var chips = h("div", { class: "chips" });
+  if (opts.vertical) chips.style.flexDirection = "column";
+  var pieces = opts.pieces;
+  var shuffled = LA.shuffle(pieces);
+  if (shuffled.join("|") === pieces.join("|")) shuffled = shuffled.slice(1).concat(shuffled[0]);
+  shuffled.forEach(function (w) { chips.appendChild(makeChip(w, zone)); });
+  var reveal = h("button", { class: "btn ghost", type: "button", hidden: true, onclick: function () {
+    resetZone(zone, chips);
+    pieces.forEach(function (w) {
+      var c = LA.$$(".chip", chips).filter(function (x) { return x.textContent === w; })[0];
+      if (c) { c._home = chips; zone.appendChild(c); }
+    });
+    finish(true);
+  } }, ["👻 Show me the answer"]);
+  function finish(revealed) {
+    zone.classList.add("right"); box.classList.add("done"); checkBtn.disabled = true; resetBtn.disabled = true; reveal.hidden = true;
+    LA.$$(".chip", chips).forEach(function (c) { c.disabled = true; });
+    chips.hidden = true;
+    var p = setPts(key, wrong, { revealed: revealed });
+    feedback(fb, "ok", revealed ? "👻 Here's the right order. Read it aloud!" : "✅ Perfect! +" + p + " ⭐");
+    done();
+  }
+  var checkBtn = h("button", { class: "btn", type: "button", onclick: function () {
+    var n = LA.$$(".chip", zone).length;
+    if (n < pieces.length) { feedback(fb, "tip", "✏️ Use all the " + opts.unit + "."); return; }
+    if (zoneText(zone) === pieces.join(" ")) { finish(false); return; }
+    wrong++; shake(zone, "wrong");
+    feedback(fb, "bad", "🧠 Not yet. " + t.hint);
+    if (wrong >= 3) reveal.hidden = false;
+  } }, ["Check ✔️"]);
+  var resetBtn = h("button", { class: "btn ghost", type: "button", onclick: function () { resetZone(zone, chips); fb.classList.remove("show"); } }, ["↩️ Reset"]);
+  box.appendChild(h("div", { class: "q", html: "<span class='num'>" + (i + 1) + ".</span> " + (t.q || "Put the words in the right order.") }));
+  box.appendChild(zone); box.appendChild(chips);
+  box.appendChild(h("div", { class: "row", style: "margin-top:10px" }, [checkBtn, resetBtn, reveal]));
+  box.appendChild(fb);
+  return box;
+}
+RENDER.order = function (t, key, done, i) { return chipTask(t, key, done, i, { pieces: t.words, placeholder: "Tap the words in the right order…", unit: "words" }); };
+RENDER.sequence = function (t, key, done, i) { return chipTask(t, key, done, i, { pieces: t.items, placeholder: "Tap the events: first … then …", unit: "sentences", vertical: true }); };
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+function modal(nodes) {
+  var box = $("#modalBox"); box.innerHTML = ""; nodes.forEach(function (n) { box.appendChild(n); });
+  $("#modal").classList.add("show");
+  var b = box.querySelector("button"); if (b) b.focus();
+}
+function closeModal() { $("#modal").classList.remove("show"); }
+
+/* Raum mit Paaren: Aufgabenanzahl = Anzahl Paare */
+ROOMS.forEach(function (r) {
+  var n = 0; r.tasks.forEach(function (t) { n += t.type === "match" ? t.pairs.length : 1; });
+  r._count = n;
+});
+
+/* =========================================================
+   START
+   ========================================================= */
+LA.scorm.init();
+state = freshState();
+var saved = LA.store.load(APP_ID);
+if (saved && saved.finished) saved = null;
+screenIntro(saved);
+})();
+</script>
+</body>
+</html>
