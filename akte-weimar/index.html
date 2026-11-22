@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akte Weimar – Warum scheiterte die erste deutsche Demokratie?</title>
+<meta name="description" content="Geschichte, 9. Klasse Realschule: Ermittlungsakte zum Scheitern der Weimarer Republik mit Quellen, Statistiken und eigenem Abschlussbericht.">
+<style>
+/* fb-education Lern-Apps – Core Styles
+   Ruhiges Grundlayout, verspielte Akzente nur in den Aufgaben.
+   Keine externen Schriften oder Ressourcen (Datenschutz, kleine Dateien). */
+
+:root {
+  --bg: #12141c;
+  --bg-2: #181b26;
+  --card: #1f2331;
+  --card-2: #272c3d;
+  --line: #343a4f;
+  --text: #eef0f6;
+  --muted: #a3a9bd;
+  --accent: #f39c3d;      /* Kürbis-Orange */
+  --accent-2: #9d8cff;    /* Geister-Violett */
+  --ok: #4cc38a;
+  --warn: #f5c84b;
+  --bad: #ef6b6b;
+  --radius: 16px;
+  --radius-s: 10px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+h1:focus, h2:focus { outline: none; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  background: radial-gradient(1200px 600px at 50% -200px, #23263a 0%, var(--bg) 60%) fixed, var(--bg);
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+}
+
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 12px; top: 12px; background: var(--accent); color: #000; padding: 8px 12px; border-radius: 8px; z-index: 99; }
+
+/* ---------- Layout ---------- */
+.app { max-width: 920px; margin: 0 auto; padding: 16px 16px 48px; }
+
+.topbar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 10px 14px; margin-bottom: 18px;
+  background: rgba(31,35,49,.75); border: 1px solid var(--line);
+  border-radius: var(--radius); position: sticky; top: 8px; z-index: 10;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.topbar .title { font-weight: 700; letter-spacing: .02em; margin-right: auto; font-size: 16px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--card-2); border: 1px solid var(--line);
+  border-radius: 999px; padding: 4px 12px; font-size: 15px; white-space: nowrap;
+}
+.pill b { font-variant-numeric: tabular-nums; }
+
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px; margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+.card.soft { background: var(--bg-2); box-shadow: none; }
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
+h1 { font-size: clamp(28px, 5vw, 42px); letter-spacing: .01em; }
+h2 { font-size: clamp(22px, 3.6vw, 28px); }
+h3 { font-size: 19px; }
+p { margin: 0 0 12px; }
+.muted { color: var(--muted); }
+.center { text-align: center; }
+.kicker { text-transform: uppercase; letter-spacing: .12em; font-size: 13px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+.big-emoji { font-size: 56px; line-height: 1; margin-bottom: 8px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  appearance: none; border: 1px solid var(--line); background: var(--card-2); color: var(--text);
+  font: inherit; font-weight: 600; padding: 12px 20px; border-radius: 12px; cursor: pointer;
+  min-height: 48px; transition: transform .08s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover { border-color: var(--accent-2); }
+.btn:active { transform: scale(.98); }
+.btn:focus-visible, .opt:focus-visible, .chip:focus-visible, input:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 2px; }
+.btn.primary { background: var(--accent); color: #1b1206; border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.07); }
+.btn.ghost { background: transparent; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.row.end { justify-content: flex-end; }
+.row.center { justify-content: center; }
+
+/* ---------- Speech bubble (Guide-Figur) ---------- */
+.guide { display: flex; gap: 14px; align-items: flex-start; margin: 14px 0; }
+.guide .avatar { font-size: 40px; line-height: 1; flex: 0 0 auto; filter: drop-shadow(0 4px 10px rgba(157,140,255,.35)); }
+.bubble {
+  position: relative; background: var(--card-2); border: 1px solid var(--line);
+  border-radius: 14px; padding: 12px 16px; flex: 1;
+}
+.bubble::before {
+  content: ""; position: absolute; left: -8px; top: 16px; width: 14px; height: 14px;
+  background: var(--card-2); border-left: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  transform: rotate(45deg);
+}
+.bubble .who { font-size: 13px; font-weight: 700; color: var(--accent-2); margin-bottom: 2px; }
+
+/* ---------- Reading texts ---------- */
+.paper {
+  background: #f4ecd8; color: #2b2418; border-radius: 6px; padding: 20px 22px;
+  font-family: Georgia, "Times New Roman", serif; font-size: 18px; line-height: 1.6;
+  box-shadow: 0 6px 18px rgba(0,0,0,.4); transform: rotate(-.4deg); margin: 8px 0 18px;
+}
+.paper p { margin: 0 0 10px; }
+.paper .sign { text-align: right; font-style: italic; }
+.paper.diary { background: #e9e2f5; transform: rotate(.3deg); }
+
+/* ---------- Tasks ---------- */
+.task { border-top: 1px dashed var(--line); padding-top: 16px; margin-top: 16px; }
+.task:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+.task .q { font-weight: 600; margin-bottom: 10px; }
+.task .num { display: inline-block; min-width: 28px; color: var(--accent); font-weight: 800; }
+.task.done .q::after { content: " ✅"; }
+
+.opts { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+.opt {
+  appearance: none; font: inherit; color: var(--text); text-align: left;
+  background: var(--bg-2); border: 2px solid var(--line); border-radius: 12px;
+  padding: 12px 14px; cursor: pointer; min-height: 52px; transition: border-color .15s, background .15s;
+}
+.opt:hover { border-color: var(--accent-2); }
+.opt.right { border-color: var(--ok); background: rgba(76,195,138,.14); }
+.opt.wrong { border-color: var(--bad); background: rgba(239,107,107,.12); animation: shake .35s; }
+.opt[disabled] { cursor: default; }
+
+.gap-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 19px; }
+.gap-input {
+  font: inherit; color: var(--text); background: var(--bg-2); border: 2px solid var(--line);
+  border-radius: 10px; padding: 8px 12px; width: 190px; max-width: 100%;
+}
+.gap-input.right { border-color: var(--ok); }
+.gap-input.wrong { border-color: var(--bad); animation: shake .35s; }
+.hint-verb { color: var(--muted); font-style: italic; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; min-height: 52px; }
+.chip {
+  appearance: none; font: inherit; color: var(--text); cursor: pointer;
+  background: var(--card-2); border: 2px solid var(--line); border-radius: 10px; padding: 8px 14px; min-height: 46px;
+}
+.chip:hover { border-color: var(--accent-2); }
+.chip.used { visibility: hidden; }
+.answer-zone {
+  border: 2px dashed var(--line); border-radius: 12px; padding: 8px; margin-bottom: 10px;
+  min-height: 62px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.answer-zone.right { border-color: var(--ok); border-style: solid; }
+.answer-zone.wrong { border-color: var(--bad); animation: shake .35s; }
+.answer-zone:empty::before { content: attr(data-placeholder); color: var(--muted); font-size: 15px; padding-left: 6px; }
+
+.feedback { margin-top: 10px; border-radius: 10px; padding: 10px 14px; font-size: 16px; display: none; }
+.feedback.show { display: block; }
+.feedback.ok { background: rgba(76,195,138,.14); border: 1px solid rgba(76,195,138,.5); }
+.feedback.tip { background: rgba(245,200,75,.12); border: 1px solid rgba(245,200,75,.45); }
+.feedback.bad { background: rgba(239,107,107,.12); border: 1px solid rgba(239,107,107,.45); }
+
+/* ---------- Code lock ---------- */
+.lock { display: flex; gap: 10px; justify-content: center; margin: 12px 0; }
+.lock input {
+  width: 64px; height: 76px; text-align: center; font: 700 34px var(--mono);
+  color: var(--accent); background: #0d0f15; border: 2px solid var(--line); border-radius: 12px;
+}
+.lock.ok input { border-color: var(--ok); color: var(--ok); }
+
+/* ---------- Toast & confetti ---------- */
+.toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(120px);
+  background: var(--card-2); border: 1px solid var(--accent); color: var(--text);
+  padding: 12px 18px; border-radius: 14px; box-shadow: var(--shadow); z-index: 50;
+  transition: transform .3s ease; max-width: 92vw; text-align: center;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+.progress { height: 8px; background: var(--bg-2); border-radius: 99px; overflow: hidden; border: 1px solid var(--line); }
+.progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent-2), var(--accent)); transition: width .4s ease; }
+
+@keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+@keyframes pop { 0% { transform: scale(.6); opacity: 0; } 70% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.pop { animation: pop .45s ease both; }
+.float { animation: float 3s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ---------- Modal ---------- */
+.modal-back { position: fixed; inset: 0; background: rgba(5,6,10,.7); display: none; align-items: center; justify-content: center; z-index: 40; padding: 16px; }
+.modal-back.show { display: flex; }
+.modal { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; max-width: 520px; width: 100%; box-shadow: var(--shadow); }
+
+.footer-note { color: var(--muted); font-size: 13px; text-align: center; margin-top: 28px; }
+
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .card { padding: 16px; }
+  .lock input { width: 54px; height: 66px; font-size: 28px; }
+}
+
+
+/* =========================================================
+   Akte Weimar – Archiv-Design
+   Schreibtisch (Linoleum) · Aktendeckel · Schreibmaschine · Stempel · Karteikarten
+   Alles reines CSS, keine Bilder, keine externen Schriften.
+   ========================================================= */
+:root {
+  --desk: #27322b; --desk-2: #1d2520;
+  --manila: #cdb487; --manila-dk: #a98e5c; --manila-lt: #dcc79e;
+  --paper: #f3ecd9; --paper-2: #ebe1c8; --rule: #d6c9aa;
+  --ink: #1f2430; --ink-soft: #4a4a48;
+  --stamp: #4d3a8a; --red: #b0262c; --green: #2f6b3a;
+  --type: "American Typewriter", "Courier Prime", "Courier New", Courier, monospace;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --hand: "Bradley Hand", "Segoe Print", "Ink Free", "Comic Sans MS", cursive;
+  /* Core-Variablen auf Papier umstellen */
+  --bg: var(--desk); --card: var(--paper); --card-2: var(--paper-2); --line: var(--rule);
+  --text: var(--ink); --muted: var(--ink-soft); --accent: var(--stamp); --accent-2: var(--stamp);
+  --ok: var(--green); --bad: var(--red); --warn: #9a6a12; --font: var(--serif);
+}
+body {
+  font-family: var(--serif); font-size: 18px; color: var(--ink);
+  background:
+    radial-gradient(1200px 700px at 50% 0%, rgba(255,255,255,.06), transparent 70%),
+    repeating-linear-gradient(45deg, rgba(0,0,0,.035) 0 2px, transparent 2px 6px),
+    var(--desk);
+}
+.app { max-width: 880px; padding: 18px 14px 60px; }
+.footer-note { color: #9fae9f; font-family: var(--type); font-size: 12px; }
+
+/* ---------- Registraturschild oben ---------- */
+.topbar {
+  background: var(--paper); border: 1px solid var(--manila-dk); border-radius: 3px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.35); font-family: var(--type); color: var(--ink);
+  backdrop-filter: none; -webkit-backdrop-filter: none; padding: 8px 14px;
+}
+.topbar .title { font-weight: 700; font-size: 15px; }
+.topbar .pill { background: none; border: 0; border-left: 1px solid var(--rule); border-radius: 0; font-size: 14px; padding: 0 0 0 12px; }
+
+/* ---------- Papier ---------- */
+.sheet {
+  position: relative; background: var(--paper); color: var(--ink);
+  background-image:
+    radial-gradient(140% 90% at 50% 40%, transparent 60%, rgba(120,90,40,.16) 100%),
+    linear-gradient(var(--paper), var(--paper));
+  padding: 30px 30px 26px; margin: 0 0 22px; border-radius: 2px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.08), 0 14px 28px rgba(0,0,0,.35);
+}
+.sheet h2, .sheet h3, .sheet h4 { font-family: var(--type); font-weight: 700; letter-spacing: .01em; }
+.sheet h2 { font-size: clamp(22px, 3.4vw, 28px); margin-bottom: 14px; }
+.sheet h3 { font-size: 18px; margin: 18px 0 10px; }
+.typed { font-family: var(--type); font-size: 16px; line-height: 1.65; }
+
+/* ---------- Aktendeckel (Startseite) ---------- */
+.desk-stage { perspective: 1600px; margin: 18px auto 10px; max-width: 640px; }
+.cover {
+  position: relative; background: var(--manila);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.025) 0 1px, transparent 1px 3px),
+    radial-gradient(130% 100% at 30% 20%, rgba(255,255,255,.18), transparent 60%),
+    radial-gradient(160% 120% at 50% 50%, transparent 55%, rgba(80,55,20,.35) 100%);
+  border-radius: 4px 10px 6px 4px; padding: 54px 40px 40px; min-height: 520px;
+  box-shadow: 0 2px 0 var(--manila-dk), 0 4px 0 #8e7547, 0 26px 50px rgba(0,0,0,.55);
+  transform-origin: left center; transition: transform .9s cubic-bezier(.6,.05,.3,1), opacity .9s;
+}
+.cover::before { /* Reiter */
+  content: "1919–1933"; position: absolute; top: -30px; right: 46px; width: 150px; height: 32px;
+  background: var(--manila-lt); border-radius: 8px 8px 0 0; font: 700 14px var(--type);
+  display: flex; align-items: center; justify-content: center; color: var(--ink-soft);
+  box-shadow: inset 0 -2px 0 var(--manila-dk);
+}
+.cover::after { /* Kaffeerand */
+  content: ""; position: absolute; width: 130px; height: 130px; right: 30px; bottom: 34px; border-radius: 50%;
+  background: radial-gradient(circle, transparent 56%, rgba(110,70,25,.22) 60%, rgba(110,70,25,.08) 66%, transparent 70%);
+  pointer-events: none;
+}
+.cover.opening { transform: rotateY(-115deg); opacity: 0; }
+.label-card {
+  background: #f7f1e0; border: 1px solid #b9a77f; padding: 18px 22px; max-width: 470px;
+  font-family: var(--type); font-size: 15px; line-height: 1.7; box-shadow: 0 2px 4px rgba(0,0,0,.15);
+}
+.label-card .row-l { display: flex; gap: 10px; border-bottom: 1px solid var(--rule); padding: 3px 0; }
+.label-card .row-l span:first-child { min-width: 110px; color: var(--ink-soft); }
+.cover h1 { font-family: var(--serif); font-size: clamp(40px, 8vw, 64px); line-height: 1; margin: 30px 0 6px; letter-spacing: -.01em; color: #2b2418; }
+.cover .sub { font-family: var(--type); font-size: 17px; color: #3b3020; margin-bottom: 26px; }
+.stamp {
+  display: inline-block; font: 700 18px var(--type); letter-spacing: .18em; color: var(--stamp);
+  border: 3px double var(--stamp); padding: 6px 14px 4px; border-radius: 4px; opacity: .85;
+  transform: rotate(-7deg); mix-blend-mode: multiply;
+  -webkit-mask-image: repeating-linear-gradient(115deg, #000 0 7px, rgba(0,0,0,.72) 7px 9px);
+  mask-image: repeating-linear-gradient(115deg, #000 0 7px, rgba(0,0,0,.72) 7px 9px);
+}
+.stamp.red { color: var(--red); border-color: var(--red); }
+.cover .stamp { position: absolute; right: 38px; top: 70px; }
+.string-btn {
+  appearance: none; cursor: pointer; font: 700 17px var(--type); color: #2b2418;
+  background: #efe4c8; border: 2px solid #6f5a33; border-radius: 30px; padding: 12px 26px; min-height: 50px;
+  box-shadow: 0 3px 0 #6f5a33;
+}
+.string-btn:hover { background: #f6edd6; }
+.string-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #6f5a33; }
+
+/* ---------- Handschriftliche Notiz mit Büroklammer ---------- */
+.note {
+  position: relative; background: #fbf6e7; font-family: var(--hand); font-size: 19px; line-height: 1.45; color: #233a6b;
+  padding: 18px 20px 14px; margin: 18px 0; max-width: 560px; transform: rotate(-1.2deg);
+  box-shadow: 0 6px 14px rgba(0,0,0,.22); border-top: 1px solid #e8dfc6;
+  background-image: repeating-linear-gradient(transparent 0 26px, rgba(35,58,107,.12) 26px 27px);
+}
+.note::before { /* Büroklammer */
+  content: ""; position: absolute; top: -14px; left: 26px; width: 16px; height: 44px;
+  border: 3px solid #8d949c; border-radius: 10px; border-bottom-color: transparent; transform: rotate(8deg);
+}
+.note .sig { display: block; text-align: right; margin-top: 4px; }
+.note b { font-weight: 700; }
+
+/* ---------- Geöffnete Akte (Ordner mit Reiter und Heftstreifen) ---------- */
+.folder {
+  position: relative; background: var(--manila); padding: 26px 18px 18px 44px; margin-top: 34px;
+  border-radius: 3px 8px 6px 6px; box-shadow: 0 22px 44px rgba(0,0,0,.5);
+  background-image: radial-gradient(160% 120% at 50% 50%, transparent 55%, rgba(80,55,20,.3) 100%);
+}
+.folder .tab {
+  position: absolute; top: -28px; left: 60px; background: var(--manila); padding: 6px 18px 4px;
+  border-radius: 8px 8px 0 0; font: 700 14px var(--type); color: #3b3020;
+}
+.folder::before { /* Heftstreifen */
+  content: ""; position: absolute; left: 14px; top: 30px; bottom: 30px; width: 12px;
+  background: repeating-linear-gradient(#cfd3d6 0 3px, #9aa1a8 3px 5px); border-radius: 3px; opacity: .9;
+}
+.folder .sheet { margin-left: 0; }
+.folder .sheet + .sheet { transform: rotate(.25deg); }
+
+/* ---------- Dokumente in der Station ---------- */
+.doc { background: #fbf7ea; border: 1px solid var(--rule); padding: 18px 20px; margin: 14px 0 18px; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+.doc h4 { font-family: var(--type); font-size: 16px; margin: 0 0 10px; text-decoration: underline; text-underline-offset: 4px; }
+.doc ul { margin: 0; padding-left: 20px; }
+.doc li { margin-bottom: 5px; }
+.doc p { margin-bottom: 10px; }
+.doc .quote { font-family: var(--type); font-size: 15.5px; line-height: 1.6; border-left: 3px solid var(--ink); padding-left: 14px; margin: 8px 0; }
+.doc .src { font-family: var(--type); font-size: 12.5px; color: var(--ink-soft); border-top: 1px dashed var(--rule); padding-top: 6px; margin-top: 10px; }
+.doc.clip { /* Zeitungsausschnitt */
+  background: #e9e3d2; font-family: Georgia, "Times New Roman", serif; columns: 2 220px; column-gap: 22px; column-rule: 1px solid #bdb39b;
+  transform: rotate(-.8deg); border: 0; box-shadow: 0 4px 10px rgba(0,0,0,.18);
+  clip-path: polygon(0 2%, 4% 0, 12% 2%, 22% 0, 35% 1.5%, 48% 0, 60% 2%, 72% 0, 85% 1.5%, 100% 0, 99% 30%, 100% 60%, 98.5% 100%, 85% 98.5%, 70% 100%, 55% 98%, 40% 100%, 25% 98.5%, 10% 100%, 0 98%, 1% 60%);
+}
+.doc.clip h4 { column-span: all; font-family: Georgia, serif; font-size: 20px; text-decoration: none; border-bottom: 2px solid var(--ink); padding-bottom: 4px; }
+table.prices { border-collapse: collapse; width: 100%; font-family: var(--type); font-size: 15px; }
+table.prices th, table.prices td { border-bottom: 1px solid var(--rule); padding: 7px 6px; text-align: left; }
+table.prices th { font-weight: 700; border-bottom: 2px solid var(--ink); }
+.chart { width: 100%; max-width: 560px; height: auto; display: block; margin: 4px 0; }
+
+/* ---------- Inhaltsverzeichnis ---------- */
+.toc { list-style: none; margin: 8px 0 0; padding: 0; font-family: var(--type); }
+.toc li { border-bottom: 1px solid var(--rule); }
+.toc button {
+  appearance: none; width: 100%; background: none; border: 0; cursor: pointer; text-align: left; color: var(--ink);
+  font: 16px var(--type); padding: 14px 4px; display: grid; grid-template-columns: 70px 1fr auto; gap: 10px; align-items: center;
+}
+.toc button:hover:not([disabled]) { background: rgba(77,58,138,.06); }
+.toc button[disabled] { color: #9a917c; cursor: not-allowed; }
+.toc .blatt { color: var(--ink-soft); }
+.toc .titel { overflow-wrap: anywhere; }
+.toc .titel small { display: block; color: var(--ink-soft); font-size: 13px; }
+.toc .status { font-size: 13px; }
+.toc .status.go { color: var(--paper); background: var(--stamp); padding: 5px 10px; border-radius: 3px; }
+.toc .status.done { font: 700 12px var(--type); letter-spacing: .12em; color: var(--stamp); border: 2px solid var(--stamp); padding: 2px 6px; transform: rotate(-6deg); display: inline-block; opacity: .85; }
+.toc li.current { background: rgba(77,58,138,.05); }
+
+/* ---------- Karteikasten ---------- */
+.cards { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); margin-top: 10px; }
+.cause {
+  position: relative; background: #fffdf6; padding: 30px 16px 14px; min-height: 140px; font-size: 15px; line-height: 1.45;
+  background-image: linear-gradient(to bottom, transparent 22px, var(--red) 22px, var(--red) 24px, transparent 24px),
+    repeating-linear-gradient(transparent 0 23px, rgba(60,90,160,.18) 23px 24px);
+  background-position: 0 0, 0 26px; box-shadow: 0 3px 8px rgba(0,0,0,.2);
+}
+.cause:nth-child(2n) { transform: rotate(.8deg); }
+.cause:nth-child(3n) { transform: rotate(-.7deg); }
+.cause b { position: absolute; top: 3px; left: 16px; right: 16px; font: 700 13px var(--type); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cause.empty { background: rgba(255,253,246,.35); box-shadow: none; border: 2px dashed rgba(255,253,246,.35); color: transparent; }
+.box-title { font-family: var(--type); color: #e9e3d2; font-size: 16px; margin: 30px 0 4px; }
+
+/* ---------- Prüfbogen (Aufgaben) ---------- */
+.form { background: #fbf7ea; }
+.form .task { border-top: 1px solid var(--rule); padding: 18px 0 6px; margin: 0; }
+.form .task:first-of-type { border-top: 0; }
+.task .q { font-family: var(--serif); font-weight: 700; font-size: 18px; }
+.task .num { font-family: var(--type); color: var(--stamp); min-width: 30px; }
+.task.done .q::after { content: ""; }
+.opts { grid-template-columns: 1fr; gap: 2px; }
+.opt {
+  position: relative; background: none; border: 0; border-radius: 0; color: var(--ink); text-align: left;
+  font: 17px var(--serif); padding: 9px 10px 9px 42px; min-height: 44px;
+}
+.opt::before {
+  content: ""; position: absolute; left: 6px; top: 50%; width: 20px; height: 20px; margin-top: -10px;
+  border: 2px solid var(--ink); background: #fff;
+}
+.opt:hover:not([disabled]) { background: rgba(77,58,138,.06); }
+.opt.right::after, .opt.wrong::after {
+  position: absolute; left: 4px; top: 50%; transform: translateY(-58%) rotate(-8deg); font: 700 28px var(--hand); line-height: 1;
+}
+.opt.right::after { content: "✓"; color: var(--green); }
+.opt.right { background: rgba(47,107,58,.08); font-weight: 600; }
+.opt.wrong::after { content: "✗"; color: var(--red); }
+.opt.wrong { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 2px; background: none; animation: none; }
+.opt[disabled] { color: inherit; }
+.opt.wrong[disabled] { color: #7d7566; }
+.feedback { font-family: var(--hand); font-size: 18px; border: 0 !important; background: none !important; padding: 4px 0 4px 42px; transform: rotate(-.6deg); }
+.feedback.ok { color: var(--green); }
+.feedback.tip, .feedback.bad { color: var(--red); }
+
+.answer-zone { background: #fff; border: 2px dashed var(--rule); border-radius: 2px; }
+.answer-zone.right { border: 2px solid var(--green); }
+.chip { background: #fffdf6; border: 1px solid var(--rule); border-radius: 2px; font: 15px var(--type); color: var(--ink); text-align: left; box-shadow: 0 2px 4px rgba(0,0,0,.12); }
+.chip:hover { border-color: var(--stamp); }
+
+/* ---------- Buttons ---------- */
+.btn { font-family: var(--type); border-radius: 3px; background: #efe8d6; border: 2px solid var(--ink); color: var(--ink); box-shadow: 0 2px 0 var(--ink); }
+.btn:hover { border-color: var(--ink); background: #f7f1e2; }
+.btn.primary { background: var(--stamp); border-color: #31245d; color: #fff; box-shadow: 0 3px 0 #31245d; }
+.btn.ghost { background: transparent; box-shadow: none; border-color: var(--ink-soft); }
+.btn:focus-visible, .opt:focus-visible, .chip:focus-visible, .toc button:focus-visible, .string-btn:focus-visible, textarea:focus-visible { outline: 3px solid #e2b93b; outline-offset: 2px; }
+.exit-row { justify-content: flex-end; }
+
+/* ---------- Modal: Karteikarte mit Stempel ---------- */
+.modal-back { background: rgba(10,14,11,.72); }
+.modal { background: transparent; border: 0; box-shadow: none; padding: 0; }
+.modal .sheet { padding-top: 26px; }
+.modal h2 { padding-right: 170px; }
+.thump { position: absolute; right: 22px; top: 18px; animation: thump .45s cubic-bezier(.2,1.6,.4,1) both .25s; }
+@keyframes thump { 0% { transform: scale(2.4) rotate(-14deg); opacity: 0; } 100% { transform: scale(1) rotate(-7deg); opacity: .85; } }
+
+/* ---------- Bericht ---------- */
+textarea.report {
+  width: 100%; min-height: 150px; font: 17px/27px var(--hand); color: #233a6b; padding: 4px 10px; border: 1px solid var(--rule); border-radius: 0;
+  background: #fffdf6 repeating-linear-gradient(transparent 0 26px, rgba(60,90,160,.2) 26px 27px); background-attachment: local;
+}
+ol.flow { counter-reset: f; list-style: none; padding: 0; margin: 6px 0 16px; }
+ol.flow li { counter-increment: f; position: relative; background: #fff; border: 1.5px solid var(--ink); padding: 9px 12px 9px 46px; margin: 0 0 22px; font-family: var(--type); font-size: 15px; }
+ol.flow li::before { content: counter(f); position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border: 2px solid var(--stamp); border-radius: 50%; color: var(--stamp); font: 700 13px var(--type); display: flex; align-items: center; justify-content: center; }
+ol.flow li:not(:last-child)::after { content: "↓"; position: absolute; left: 50%; bottom: -21px; font: 700 18px var(--type); color: var(--ink-soft); }
+ol.flow li:last-child { border-style: dashed; }
+.doc.personal { border-left: 6px solid var(--manila-dk); }
+.doc.personal .dates { font-family: var(--type); font-size: 14px; color: var(--ink-soft); margin-top: -4px; }
+.assign-row { display: grid; grid-template-columns: 1fr auto; gap: 8px 14px; align-items: center; border-bottom: 1px dotted var(--rule); padding: 8px 0; }
+.assign-row .who-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.who-btn { appearance: none; font: 14px var(--type); color: var(--ink); background: #fff; border: 1.5px solid var(--ink); border-radius: 2px; padding: 6px 10px; min-height: 38px; cursor: pointer; }
+.who-btn.sel { background: var(--stamp); color: #fff; border-color: var(--stamp); }
+.assign-row.wrong .who-btn.sel { background: var(--red); border-color: var(--red); }
+.assign-row.right .who-btn.sel { background: var(--green); border-color: var(--green); }
+@media (max-width: 600px) { .assign-row { grid-template-columns: 1fr; } }
+.hard-mark { font: 700 18px var(--hand); color: var(--red); display: inline-block; transform: rotate(-4deg); margin-left: 8px; white-space: nowrap; }
+.multi .opt.sel::after { content: "✕"; position: absolute; left: 7px; top: 50%; transform: translateY(-55%); font: 700 22px var(--hand); color: #233a6b; }
+.multi .opt.sel.right::after { content: "✓"; color: var(--green); font-size: 28px; left: 4px; transform: translateY(-58%) rotate(-8deg); }
+.multi .opt.missed { background: rgba(176,38,44,.07); }
+.multi .opt.missed::after { content: "fehlt"; position: absolute; right: 8px; top: 50%; transform: translateY(-50%) rotate(-3deg); font: 700 16px var(--hand); color: var(--red); }
+.position .opt.sel::after { content: "✕"; position: absolute; left: 7px; top: 50%; transform: translateY(-55%); font: 700 22px var(--hand); color: #233a6b; }
+.starters { font-family: var(--type); font-size: 14px; color: var(--ink-soft); }
+.result-box { font-family: var(--type); font-size: 15.5px; line-height: 1.7; white-space: pre-wrap; background: none; border: 0; padding: 0; }
+.stats { display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--type); font-size: 15px; margin: 6px 0 16px; }
+.closing-stamp { position: absolute; right: 26px; top: 22px; }
+.epilog { background: #e6dfcd; }
+
+@media (max-width: 600px) {
+  .cover { padding: 50px 20px 28px; min-height: 0; }
+  .cover .stamp { position: static; margin-bottom: 12px; }
+  .sheet { padding: 22px 16px 18px; }
+  .folder { padding: 22px 8px 12px 26px; }
+  .folder::before { left: 6px; width: 10px; }
+  .toc button { grid-template-columns: 54px 1fr; }
+  .toc .status { grid-column: 2; justify-self: start; }
+  .doc.clip { columns: 1; }
+  .doc { padding: 14px 12px; }
+  .typed { font-size: 15px; }
+  table.prices { font-size: 13px; }
+  table.prices th, table.prices td { padding: 5px 3px; }
+  .modal h2 { padding-right: 0 !important; }
+  .thump, .closing-stamp { position: static; display: inline-block; margin-bottom: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .cover { transition: none; } }
+@media print { .topbar, .no-print, .footer-note { display: none !important; } body { background: #fff; } .sheet { box-shadow: none; } }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Zum Inhalt springen</a>
+<div class="app">
+  <header class="topbar" id="topbar" hidden>
+    <span class="title">Akte Weimar</span>
+    <span class="pill" id="where">Inhaltsverzeichnis</span>
+    <span class="pill"><b id="points">0</b>&nbsp;Punkte</span>
+  </header>
+  <main id="main"></main>
+  <p class="footer-note">fb-education.de – Akte Weimar. Es werden keine Daten an einen Server gesendet.</p>
+</div>
+
+<div class="modal-back" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal" id="modalBox"></div>
+</div>
+
+<script>
+/* fb-education Lern-Apps – Core
+   - SCORM 1.2 (findet die LMS-API automatisch, läuft ohne LMS einfach lokal)
+   - Fortschritt speichern (SCORM suspend_data oder localStorage)
+   - Gestuftes Feedback für Eingaben (Apostroph/Großschreibung, Tippfehler, Grammatik)
+   - Kleine UI-Helfer
+   Keine externen Verbindungen, keine personenbezogenen Daten. */
+(function () {
+  "use strict";
+  var LA = {};
+
+  /* ---------- DOM-Helfer ---------- */
+  LA.$ = function (sel, root) { return (root || document).querySelector(sel); };
+  LA.$$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+  LA.h = function (tag, attrs, children) {
+    var el = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k];
+      if (v === null || v === undefined || v === false) return;
+      if (k === "class") el.className = v;
+      else if (k === "html") el.innerHTML = v;
+      else if (k === "text") el.textContent = v;
+      else if (k.slice(0, 2) === "on") el.addEventListener(k.slice(2), v);
+      else el.setAttribute(k, v === true ? "" : v);
+    });
+    (children || []).forEach(function (c) {
+      if (c === null || c === undefined) return;
+      el.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+    });
+    return el;
+  };
+  LA.shuffle = function (arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  };
+
+  var toastTimer;
+  LA.toast = function (msg, ms) {
+    var t = LA.$("#la-toast");
+    if (!t) { t = LA.h("div", { id: "la-toast", class: "toast", role: "status", "aria-live": "polite" }); document.body.appendChild(t); }
+    t.textContent = msg; t.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove("show"); }, ms || 2600);
+  };
+
+  /* ---------- SCORM 1.2 ---------- */
+  var scorm = { api: null, active: false, start: Date.now() };
+  function findAPI(win) {
+    var tries = 0;
+    while (win && tries < 12) {
+      try { if (win.API) return win.API; } catch (e) { return null; }
+      if (win.parent && win.parent !== win) { win = win.parent; tries++; } else break;
+    }
+    return null;
+  }
+  scorm.init = function () {
+    var api = findAPI(window);
+    if (!api) { try { if (window.opener) api = findAPI(window.opener); } catch (e) { api = null; } }
+    if (!api) return false;
+    try {
+      if (String(api.LMSInitialize("")) === "true") {
+        scorm.api = api; scorm.active = true;
+        var st = scorm.get("cmi.core.lesson_status");
+        if (!st || st === "not attempted") scorm.set("cmi.core.lesson_status", "incomplete");
+        scorm.commit();
+      }
+    } catch (e) { scorm.active = false; }
+    return scorm.active;
+  };
+  scorm.get = function (k) { if (!scorm.active) return ""; try { return String(scorm.api.LMSGetValue(k) || ""); } catch (e) { return ""; } };
+  scorm.set = function (k, v) { if (!scorm.active) return false; try { return String(scorm.api.LMSSetValue(k, String(v))) === "true"; } catch (e) { return false; } };
+  scorm.commit = function () { if (!scorm.active) return; try { scorm.api.LMSCommit(""); } catch (e) {} };
+  function sessionTime() {
+    var s = Math.max(0, Math.round((Date.now() - scorm.start) / 1000));
+    var hh = Math.floor(s / 3600), mm = Math.floor((s % 3600) / 60), ss = s % 60;
+    function p(n, l) { n = String(n); while (n.length < l) n = "0" + n; return n; }
+    return p(hh, 4) + ":" + p(mm, 2) + ":" + p(ss, 2);
+  }
+  scorm.finish = function () {
+    if (!scorm.active || scorm.finished) return;
+    scorm.finished = true;
+    scorm.set("cmi.core.session_time", sessionTime());
+    scorm.set("cmi.core.exit", scorm.exitMode === undefined ? "suspend" : scorm.exitMode);
+    scorm.commit();
+    try { scorm.api.LMSFinish(""); } catch (e) {}
+  };
+  LA.scorm = scorm;
+
+  /* Ergebnis an das LMS melden (Prozent 0–100) */
+  LA.report = function (percent, finished, passMark) {
+    var pct = Math.max(0, Math.min(100, Math.round(percent)));
+    if (!scorm.active) return;
+    scorm.set("cmi.core.score.min", 0);
+    scorm.set("cmi.core.score.max", 100);
+    scorm.set("cmi.core.score.raw", pct);
+    if (finished) scorm.set("cmi.core.lesson_status", pct >= (passMark || 50) ? "passed" : "completed");
+    scorm.commit();
+  };
+
+  /* ---------- Speichern ---------- */
+  LA.store = {
+    load: function (appId) {
+      var raw = "";
+      if (scorm.active) raw = scorm.get("cmi.suspend_data");
+      if (!raw) { try { raw = window.localStorage.getItem("la:" + appId) || ""; } catch (e) { raw = ""; } }
+      if (!raw) return null;
+      try { return JSON.parse(raw); } catch (e) { return null; }
+    },
+    save: function (appId, data) {
+      var raw = JSON.stringify(data);
+      if (scorm.active) { scorm.set("cmi.suspend_data", raw.slice(0, 4000)); scorm.commit(); }
+      try { window.localStorage.setItem("la:" + appId, raw); } catch (e) {}
+    },
+    clear: function (appId) {
+      if (scorm.active) { scorm.set("cmi.suspend_data", ""); scorm.commit(); }
+      try { window.localStorage.removeItem("la:" + appId); } catch (e) {}
+    }
+  };
+
+  /* ---------- Antwortprüfung mit gestuftem Feedback ---------- */
+  function lev(a, b) {
+    var m = a.length, n = b.length, d = [], i, j;
+    for (i = 0; i <= m; i++) { d[i] = [i]; }
+    for (j = 0; j <= n; j++) { d[0][j] = j; }
+    for (i = 1; i <= m; i++) for (j = 1; j <= n; j++) {
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    return d[m][n];
+  }
+  LA.lev = lev;
+  function norm(s) {
+    return String(s || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " ").trim().replace(/[.!?]+$/, "");
+  }
+  function bare(s) { return norm(s).toLowerCase().replace(/'/g, "").replace(/\s+/g, ""); }
+
+  /* item: { answers:[...], wrongForms:{ "form": "hint" }, hint:"allgemeiner Tipp" }
+     Rückgabe: { ok:true } oder { ok:false, type, msg } */
+  LA.checkText = function (input, item) {
+    var given = norm(input);
+    if (!given) return { ok: false, type: "empty", msg: "✏️ Type your answer first." };
+    var answers = item.answers;
+    for (var i = 0; i < answers.length; i++) if (given === norm(answers[i])) return { ok: true };
+    for (i = 0; i < answers.length; i++) if (given.toLowerCase() === norm(answers[i]).toLowerCase()) return { ok: true };
+    // Apostroph / Leerzeichen
+    for (i = 0; i < answers.length; i++) if (bare(given) === bare(answers[i])) {
+      return { ok: false, type: "apostrophe", msg: "🔎 So close! Check the apostrophe (') or the spaces." };
+    }
+    // Typische Grammatikfehler (bekannte falsche Formen)
+    var wf = item.wrongForms || {};
+    var gl = given.toLowerCase();
+    for (var key in wf) if (Object.prototype.hasOwnProperty.call(wf, key) && bare(key) === bare(gl)) {
+      return { ok: false, type: "grammar", msg: "🧠 " + wf[key] };
+    }
+    // Tippfehler
+    for (i = 0; i < answers.length; i++) {
+      var a = norm(answers[i]).toLowerCase();
+      var dist = lev(gl, a);
+      if (dist > 0 && dist <= (a.length > 6 ? 2 : 1)) return { ok: false, type: "spelling", msg: "🔤 Almost! Check your spelling." };
+    }
+    return { ok: false, type: "grammar", msg: "🧠 " + (item.hint || "Not yet. Read the sentence again and try once more.") };
+  };
+
+  window.LA = LA;
+  window.addEventListener("pagehide", function () { scorm.finish(); });
+  window.addEventListener("beforeunload", function () { scorm.finish(); });
+})();
+
+</script>
+<script>
+(function () {
+"use strict";
+var h = LA.h, $ = LA.$;
+var APP_ID = "akte-weimar-v1";
+
+/* ---------- Diagramm im Stil eines alten Statistik-Jahrbuchs (Schraffuren statt Farben) ---------- */
+function barChart(opt) {
+  var W = 460, H = 280, L = 38, B = 44, T = 40, R = 6, id = opt.id;
+  var n = opt.labels.length, s = opt.series.length;
+  var gw = (W - L - R) / n, bw = Math.min(36, (gw - 16) / s);
+  var y = function (v) { return T + (H - T - B) * (1 - v / opt.max); };
+  var ink = "#1f2430";
+  var out = '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + opt.title + '"><defs>' +
+    '<pattern id="' + id + 'p0" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#f3ecd9"/><line x1="0" y1="0" x2="0" y2="6" stroke="' + ink + '" stroke-width="3.2"/></pattern>' +
+    '<pattern id="' + id + 'p1" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#f3ecd9"/><circle cx="2.5" cy="2.5" r="1.1" fill="' + ink + '"/></pattern></defs>';
+  out += '<text x="' + L + '" y="16" font-size="15" font-weight="700" fill="' + ink + '" font-family="American Typewriter, Courier New, monospace">' + opt.title + '</text>';
+  out += '<text x="' + (W - R) + '" y="32" font-size="12" text-anchor="end" fill="#4a4a48" font-family="Courier New, monospace">' + opt.unit + '</text>';
+  for (var g = 0; g <= 4; g++) {
+    var v = opt.max * g / 4, yy = y(v);
+    out += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + yy + '" y2="' + yy + '" stroke="#bdb39b" stroke-dasharray="' + (g ? "2 3" : "0") + '"/>';
+    out += '<text x="' + (L - 6) + '" y="' + (yy + 4) + '" font-size="12" text-anchor="end" fill="#4a4a48" font-family="Courier New, monospace">' + String(Math.round(v * 10) / 10).replace(".", ",") + '</text>';
+  }
+  opt.labels.forEach(function (lab, i) {
+    var x0 = L + gw * i + (gw - bw * s) / 2;
+    opt.series.forEach(function (se, j) {
+      var val = se.values[i], x = x0 + j * bw, yy = y(val);
+      out += '<rect x="' + x + '" y="' + yy + '" width="' + (bw - 4) + '" height="' + (H - B - yy) + '" fill="url(#' + id + 'p' + se.fill + ')" stroke="' + ink + '" stroke-width="1.4"/>';
+      out += '<text x="' + (x + (bw - 4) / 2) + '" y="' + (yy - 5) + '" font-size="13" font-weight="700" text-anchor="middle" fill="' + ink + '" font-family="Courier New, monospace">' + String(val).replace(".", ",") + '</text>';
+    });
+    out += '<text x="' + (L + gw * i + gw / 2) + '" y="' + (H - B + 18) + '" font-size="13" text-anchor="middle" fill="' + ink + '" font-family="Courier New, monospace">' + lab + '</text>';
+  });
+  var lx = L;
+  if (s > 1) opt.series.forEach(function (se) {
+    out += '<rect x="' + lx + '" y="' + (H - 15) + '" width="14" height="12" fill="url(#' + id + 'p' + se.fill + ')" stroke="' + ink + '"/><text x="' + (lx + 20) + '" y="' + (H - 5) + '" font-size="13" fill="' + ink + '" font-family="Courier New, monospace">' + se.name + '</text>';
+    lx += 90;
+  });
+  return out + '</svg>';
+}
+
+/* =========================================================
+   INHALT
+   ========================================================= */
+var TF = ["Stimmt", "Stimmt nicht"];
+var FL = ["Historischer Fakt", "Propaganda / Legende"];
+
+var STATIONS = [
+  {
+    id: "verfassung", emoji: "📜", name: "Die Verfassung von 1919", year: "1919",
+    intro: "Beweisstück 1 ist eine Abschrift der Weimarer Reichsverfassung vom 11. August 1919. Sie machte Deutschland zur ersten parlamentarischen Demokratie. Einige ihrer Regeln wurden später aber zum Problem.",
+    tip: "Lies den Kasten „Wer hat welche Macht?“ genau. Achte besonders auf den Reichspräsidenten und auf Artikel 48.",
+    doc: '<div class="doc"><h4>Wer hat welche Macht?</h4><ul>' +
+      '<li><b>Das Volk</b> (alle Männer und Frauen ab 20 Jahren) wählt den Reichstag und direkt den Reichspräsidenten.</li>' +
+      '<li><b>Der Reichstag</b> beschließt die Gesetze und kann den Reichskanzler durch ein Misstrauensvotum stürzen.</li>' +
+      '<li><b>Der Reichspräsident</b> wird für 7 Jahre gewählt. Er ernennt und entlässt den Reichskanzler, kann den Reichstag auflösen und hat den Oberbefehl über die Reichswehr.</li>' +
+      '<li><b>Wahlrecht:</b> reines Verhältniswahlrecht ohne Sperrklausel. Auch sehr kleine Parteien kommen in den Reichstag.</li></ul></div>' +
+      '<div class="doc"><h4>Artikel 48, Absatz 2</h4><p class="quote">„Der Reichspräsident kann, wenn im Deutschen Reiche die öffentliche Sicherheit und Ordnung erheblich gestört oder gefährdet wird, die zur Wiederherstellung der öffentlichen Sicherheit und Ordnung nötigen Maßnahmen treffen, erforderlichenfalls mit Hilfe der bewaffneten Macht einschreiten. Zu diesem Zwecke darf er vorübergehend die in den Artikeln 114, 115, 117, 118, 123, 124 und 153 festgesetzten Grundrechte ganz oder zum Teil außer Kraft setzen.“</p>' +
+      '<p class="src">Quelle: Verfassung des Deutschen Reichs vom 11. August 1919, Art. 48 Abs. 2</p></div>',
+    tasks: [
+      { type: "mc", q: "Wer wählte den Reichspräsidenten?", options: ["das Volk direkt", "der Reichstag", "die Regierungen der Länder"], answer: 0,
+        hints: { 1: "Lies den ersten Punkt im Kasten noch einmal.", 2: "Lies den ersten Punkt im Kasten noch einmal." } },
+      { type: "mc", q: "Was durfte der Reichspräsident nach Artikel 48 tun, wenn die „öffentliche Sicherheit und Ordnung“ gestört war?", options: ["den Reichstag für immer abschaffen", "ohne den Reichstag Maßnahmen treffen und Grundrechte vorübergehend außer Kraft setzen", "sich selbst zum Kaiser ernennen"], answer: 1,
+        hints: { 0: "Lies Artikel 48 genau. Was steht dort über die Grundrechte?", 2: "Lies Artikel 48 genau. Was steht dort über die Grundrechte?" } },
+      { type: "mc", q: "Warum saßen im Reichstag sehr viele kleine Parteien?", options: ["Es durften nur kleine Parteien antreten.", "Der Reichspräsident bestimmte die Parteien.", "Es gab keine Sperrklausel wie heute die 5-%-Hürde."], answer: 2,
+        hints: { 0: "Schau beim Punkt „Wahlrecht“ nach.", 1: "Schau beim Punkt „Wahlrecht“ nach." } },
+      { type: "mc", binary: true, q: "Der Reichspräsident hatte nur repräsentative Aufgaben, ähnlich wie heute der Bundespräsident.", options: TF, answer: 1,
+        hints: { 0: "Was durfte der Reichspräsident alles? Zähle seine Rechte im Kasten auf." } }
+    ],
+    card: { title: "Schwächen der Verfassung", text: "Ein sehr starker Reichspräsident mit Notverordnungsrecht (Art. 48) und ein zersplitterter Reichstag ohne Sperrklausel." },
+    reward: "Du hast die Verfassung untersucht. Wichtig für später: Ein Reichspräsident, der mit Artikel 48 am Reichstag vorbei regieren kann."
+  },
+  {
+    id: "versailles", emoji: "✒️", name: "Versailles und die Dolchstoßlegende", year: "1919",
+    intro: "Beweisstück 2 ist eine Mappe mit Zeitungsausschnitten aus den Jahren 1919 bis 1925. Viele Deutsche empfanden den Friedensvertrag von Versailles als Demütigung. Gegner der Republik nutzten das für ihre Propaganda.",
+    tip: "Ein Fakt lässt sich mit Quellen belegen. Propaganda verdreht Tatsachen oder beschimpft Gegner. Achte auf wertende Wörter wie „Verbrecher“ oder „Verrat“.",
+    doc: '<div class="doc"><h4>Der Vertrag von Versailles (28. Juni 1919)</h4><ul>' +
+      '<li>Deutschland verliert Gebiete, z. B. Elsass-Lothringen sowie große Teile von Westpreußen und Posen.</li>' +
+      '<li>Das Heer wird auf 100.000 Soldaten begrenzt, die allgemeine Wehrpflicht ist verboten.</li>' +
+      '<li>Deutschland muss hohe Wiedergutmachung leisten (Reparationen).</li>' +
+      '<li>Artikel 231 macht Deutschland und seine Verbündeten für die Schäden des Krieges verantwortlich.</li></ul></div>' +
+      '<div class="doc"><h4>Wie der Krieg wirklich endete</h4><p>Im Herbst 1918 hielt die Oberste Heeresleitung (Hindenburg und Ludendorff) den Krieg für verloren und forderte selbst, schnell einen Waffenstillstand zu schließen. Unterschrieben haben ihn dann zivile Politiker.</p>' +
+      '<p>Später behaupteten Militärs und rechte Politiker, das Heer sei „im Felde unbesiegt“ gewesen und von Revolutionären und Demokraten in der Heimat „von hinten erdolcht“ worden. Diese Behauptung nennt man <b>Dolchstoßlegende</b>.</p></div>',
+    tasks: [
+      { type: "mc", binary: true, q: "„Die Oberste Heeresleitung forderte im Herbst 1918 selbst einen Waffenstillstand.“", options: FL, answer: 0,
+        hints: { 1: "Lies den Kasten „Wie der Krieg wirklich endete“." } },
+      { type: "mc", binary: true, q: "„Unser Heer war im Felde unbesiegt. Es wurde nur durch Verrat in der Heimat besiegt.“", options: FL, answer: 1,
+        hints: { 0: "Wer hielt den Krieg schon 1918 für verloren? Die Militärführung selbst." } },
+      { type: "mc", binary: true, q: "„Der Vertrag von Versailles begrenzte das deutsche Heer auf 100.000 Soldaten.“", options: FL, answer: 0,
+        hints: { 1: "Schau im Kasten zum Vertrag von Versailles nach." } },
+      { type: "mc", binary: true, q: "„Die Politiker, die den Waffenstillstand unterschrieben haben, sind Novemberverbrecher.“", options: FL, answer: 1,
+        hints: { 0: "Achte auf das Wort „Verbrecher“. Hier wird beschimpft, nicht belegt." } },
+      { type: "mc", q: "Warum schadete die Dolchstoßlegende der Republik?", options: ["Sie führte zu höheren Reparationen.", "Sie gab den demokratischen Politikern die Schuld an der Niederlage.", "Der Reichstag beschloss sie als Gesetz."], answer: 1,
+        hints: { 0: "Wer wird in der Legende als „Verräter“ dargestellt?", 2: "Wer wird in der Legende als „Verräter“ dargestellt?" } }
+    ],
+    card: { title: "Last von Versailles und Dolchstoßlegende", text: "Viele sahen die Republik als Ergebnis von Niederlage und „Verrat“. Ihre Gegner machten Stimmung gegen die Demokraten." },
+    reward: "Beweisstück 2 ist ausgewertet. Die Republik startete mit einer schweren Hypothek, und ihre Gegner nutzten Lügen gegen sie."
+  },
+  {
+    id: "krisenjahr", emoji: "💸", name: "Das Krisenjahr 1923", year: "1923",
+    intro: "Beweisstück 3 sind Einkaufszettel und Zeitungsmeldungen aus dem Jahr 1923. Das Geld verlor damals so schnell an Wert, dass viele ihren Lohn sofort ausgaben, bevor er nichts mehr wert war. Im November versuchte Hitler in München, die Macht an sich zu reißen.",
+    tip: "Vergleiche die beiden Spalten der Preistabelle. Überlege: Wer hatte Geld auf dem Sparbuch, wer besaß Häuser, Land oder Waren?",
+    doc: '<div class="doc"><h4>Was kostete was in Berlin?</h4><table class="prices"><thead><tr><th>Ware</th><th>9. Juni 1923</th><th>2. Dezember 1923</th></tr></thead><tbody>' +
+      '<tr><td>1 Ei</td><td>800 Mark</td><td>320 Milliarden Mark</td></tr>' +
+      '<tr><td>1 Liter Milch</td><td>1.440 Mark</td><td>360 Milliarden Mark</td></tr>' +
+      '<tr><td>1 kg Kartoffeln</td><td>5.000 Mark</td><td>90 Milliarden Mark</td></tr>' +
+      '<tr><td>1 US-Dollar</td><td>100.000 Mark</td><td>4,21 Billionen Mark</td></tr></tbody></table>' +
+      '<p class="src">Quelle: Zusammenstellung nach planet-wissen.de (WDR), „Die Hyperinflation von 1923“</p>' +
+      '<p>Wer sein Geld auf der Bank gespart hatte, verlor fast alles. Wer Schulden hatte oder Häuser, Land und Fabriken besaß, kam besser durch die Krise. Im November 1923 wurde eine neue Währung eingeführt, die Rentenmark.</p></div>' +
+      '<div class="doc clip"><h4>Meldung vom 9. November 1923</h4><p>Am 8. und 9. November 1923 versuchte Adolf Hitler mit seinen Anhängern in München zu putschen. Der Marsch zur Feldherrnhalle wurde von der bayerischen Landespolizei gestoppt. Im Prozess 1924 erhielt Hitler fünf Jahre Festungshaft. Schon im Dezember 1924 kam er wieder frei.</p></div>',
+    tasks: [
+      { type: "mc", q: "Wie viel kostete ein Ei in Berlin am 2. Dezember 1923?", options: ["800 Mark", "320 Milliarden Mark", "4,21 Billionen Mark"], answer: 1,
+        hints: { 0: "Das war der Preis im Juni. Schau in die rechte Spalte.", 2: "Das war der Preis für einen Dollar. Schau in die Zeile „1 Ei“." } },
+      { type: "mc", q: "Wer verlor durch die Inflation am meisten?", options: ["Menschen mit Ersparnissen auf der Bank", "Menschen mit Schulden", "Besitzer von Häusern und Land"], answer: 0,
+        hints: { 1: "Schulden wurden durch die Inflation fast wertlos. Wer verlor dann Geld?", 2: "Häuser und Land behalten ihren Wert. Was passierte mit Geld auf dem Sparbuch?" } },
+      { type: "mc", q: "Warum war das politisch so gefährlich für die Republik?", options: ["Die Löhne stiegen schneller als die Preise.", "Die Inflation betraf nur das Ausland.", "Viele aus dem Mittelstand verloren ihr Erspartes und gaben der Republik die Schuld."], answer: 2,
+        hints: { 0: "Lies noch einmal, wer bei der Inflation am meisten verlor.", 1: "Die Preistabelle stammt aus Berlin." } },
+      { type: "mc", binary: true, q: "Der Hitler-Putsch im November 1923 in München scheiterte.", options: TF, answer: 0,
+        hints: { 1: "Lies die Meldung vom 9. November 1923." } },
+      { type: "mc", q: "Wie bestrafte die Justiz Hitler für den Putschversuch?", options: ["lebenslange Haft", "fünf Jahre Festungshaft, schon nach gut einem Jahr frei", "Ausweisung aus Deutschland"], answer: 1,
+        hints: { 0: "Lies das Ende der Meldung.", 2: "Lies das Ende der Meldung." } }
+    ],
+    card: { title: "Inflation und milde Justiz", text: "1923 verlor der Mittelstand sein Erspartes und das Vertrauen in die Republik. Rechte Putschisten wurden milde bestraft." },
+    reward: "Beweisstück 3 zeigt: Viele Menschen verloren 1923 ihre Ersparnisse und ihr Vertrauen. Und ein Putschist kam nach kurzer Haft wieder frei."
+  },
+  {
+    id: "wirtschaftskrise", emoji: "📉", name: "Weltwirtschaftskrise und Wahlen", year: "1929–1932",
+    intro: "Beweisstück 4 sind zwei Statistiken. Nach dem Börsenkrach in New York im Oktober 1929 zogen amerikanische Banken ihre Kredite aus Deutschland ab. Firmen gingen pleite, Millionen Menschen verloren ihre Arbeit.",
+    tip: "Lies zuerst die Überschrift und die Einheit jedes Diagramms. Vergleiche dann die Balken von links nach rechts.",
+    doc: function () {
+      return '<div class="doc">' + barChart({ id: "c1", title: "Arbeitslose in Deutschland (Jahresdurchschnitt)", unit: "in Millionen", labels: ["1929", "1932"], max: 6, series: [{ name: "Arbeitslose", fill: 0, values: [1.9, 5.6] }] }) +
+        '<p class="src">Quelle: Statistisches Jahrbuch für das Deutsche Reich 1939/40, nach LeMO (Deutsches Historisches Museum)</p></div>' +
+        '<div class="doc">' + barChart({ id: "c2", title: "Stimmenanteile bei den Reichstagswahlen", unit: "in Prozent", labels: ["Mai 1928", "Sept. 1930", "Juli 1932", "Nov. 1932", "März 1933*"], max: 50, series: [{ name: "NSDAP", fill: 0, values: [2.6, 18.3, 37.3, 33.1, 43.9] }, { name: "KPD", fill: 1, values: [10.6, 13.1, 14.6, 16.9, 12.3] }] }) +
+        '<p class="src">* Die Wahl im März 1933 war nicht mehr frei: Gegner der NSDAP wurden verfolgt und eingeschüchtert.<br>Quelle: Statistisches Jahrbuch für das Deutsche Reich 1933, nach LeMO; Jürgen Falter u. a.: Wahlen und Abstimmungen in der Weimarer Republik, 1986 (nach Deutscher Bundestag)</p>' +
+        '<p>Im Juli 1932 stellten NSDAP und KPD zusammen mehr als die Hälfte der Abgeordneten. Beide Parteien lehnten die Demokratie ab.</p><p>Die Not hielt an: Anfang 1933 waren in Deutschland über sechs Millionen Menschen arbeitslos.</p><p class="src">Quelle: LeMO (Deutsches Historisches Museum), „Die Weltwirtschaftskrise“</p></div>';
+    },
+    tasks: [
+      { type: "mc", q: "Wie entwickelte sich die Zahl der Arbeitslosen von 1929 bis 1932?", options: ["Sie hat sich fast verdreifacht.", "Sie hat sich halbiert.", "Sie blieb etwa gleich."], answer: 0,
+        hints: { 1: "Vergleiche die Höhe der beiden Balken: 1,9 und 5,6 Millionen.", 2: "Vergleiche die Höhe der beiden Balken: 1,9 und 5,6 Millionen." } },
+      { type: "mc", q: "Bei welcher Wahl gelang der NSDAP der große Durchbruch?", options: ["Mai 1928", "September 1930", "März 1933"], answer: 1,
+        hints: { 0: "1928 hatte die NSDAP nur 2,6 %. Wann sprang ihr Ergebnis nach oben?", 2: "Schau, wann der Balken zum ersten Mal stark gewachsen ist." } },
+      { type: "mc", q: "NSDAP und KPD hatten ab Juli 1932 zusammen mehr als die Hälfte der Sitze. Was bedeutete das für den Reichstag?", options: ["NSDAP und KPD bildeten zusammen eine Regierung.", "Die demokratischen Parteien hatten keine Mehrheit mehr. Der Reichstag war blockiert.", "Der Reichstag wurde abgeschafft."], answer: 1,
+        hints: { 0: "Beide Parteien waren erbitterte Feinde. Sie wollten die Republik zerstören, nicht gemeinsam regieren.", 2: "Abgeschafft wurde der Reichstag 1932 nicht. Aber konnte er noch arbeiten?" } },
+      { type: "mc", binary: true, q: "Bei der letzten freien Reichstagswahl im November 1932 verlor die NSDAP Stimmen.", options: TF, answer: 0,
+        hints: { 1: "Vergleiche die NSDAP-Balken von Juli und November 1932." } },
+      { type: "mc", q: "Hatte die NSDAP bei einer freien Wahl jemals die absolute Mehrheit (über 50 %)?", options: ["Ja, im Juli 1932.", "Ja, im November 1932.", "Nein. Ihr bestes Ergebnis bei einer freien Wahl waren 37,3 %."], answer: 2,
+        hints: { 0: "Lies den Wert für Juli 1932 genau ab.", 1: "Lies den Wert für November 1932 genau ab." } },
+      { type: "mc", hard: true, q: "Rechne: Um wie viele Prozentpunkte stieg der Stimmenanteil der NSDAP von Mai 1928 bis Juli 1932?", options: ["um 37,3 Prozentpunkte", "um 34,7 Prozentpunkte", "um 18,3 Prozentpunkte"], answer: 1,
+        hints: { 0: "37,3 % ist das Ergebnis vom Juli 1932. Du musst den Wert von 1928 noch abziehen.", 2: "18,3 % war das Ergebnis von 1930. Vergleiche Mai 1928 mit Juli 1932." } },
+      { type: "mc", hard: true, q: "Ein Mitschüler behauptet: „Die NSDAP wurde immer stärker, je schlimmer die Krise war. Das erklärt alles.“ Welche Beobachtung aus den Quellen spricht gegen diese Behauptung?", options: ["Die Arbeitslosigkeit sank schon ab 1930 wieder.", "Im November 1932 verlor die NSDAP Stimmen, obwohl die Not anhielt.", "Die NSDAP gewann bereits 1928 die meisten Stimmen."], answer: 1,
+        hints: { 0: "Stimmt das? Vergleiche die Arbeitslosenzahlen von 1929 und 1932 und lies den letzten Satz im Kasten.", 2: "Schau dir den Balken von 1928 an: 2,6 %." } }
+    ],
+    card: { title: "Weltwirtschaftskrise und Radikalisierung", text: "Massenarbeitslosigkeit und Not trieben viele Wählerinnen und Wähler zu NSDAP und KPD. Die Demokraten verloren ihre Mehrheit." },
+    reward: "Beweisstück 4 zeigt den Zusammenhang: Mit der Not stiegen die Stimmen für die Feinde der Demokratie. Eine Mehrheit hatte die NSDAP bei freien Wahlen aber nie."
+  },
+  {
+    id: "praesidialkabinette", emoji: "⚖️", name: "Regieren ohne Reichstag: die Präsidialkabinette", year: "1930–1932",
+    intro: "Beweisstück 5 sind drei Personalakten aus der Reichskanzlei und eine Abschrift zweier Verfassungsartikel. Von 1930 bis 1933 regierten Kanzler, die keine Mehrheit im Reichstag hatten. Sie stützten sich allein auf den Reichspräsidenten.",
+    tip: "Lies zuerst die beiden Artikel und den Kreislauf darunter. Für die Zuordnung hilft dir der Abschnitt „Warum gescheitert?“ in jeder Personalakte.",
+    doc: '<div class="doc"><h4>Die Werkzeuge des Reichspräsidenten</h4>' +
+      '<p><b>Artikel 48, Absatz 3:</b></p><p class="quote">„Von allen gemäß Abs. 1 oder Abs. 2 dieses Artikels getroffenen Maßnahmen hat der Reichspräsident unverzüglich dem Reichstag Kenntnis zu geben. Die Maßnahmen sind auf Verlangen des Reichstags außer Kraft zu setzen.“</p>' +
+      '<p><b>Artikel 25:</b></p><p class="quote">„Der Reichspräsident kann den Reichstag auflösen, jedoch nur einmal aus dem gleichen Anlaß. Die Neuwahl findet spätestens am sechzigsten Tage nach der Auflösung statt.“</p>' +
+      '<p class="src">Quelle: Verfassung des Deutschen Reichs vom 11. August 1919, Art. 25 und Art. 48 Abs. 3</p></div>' +
+      '<div class="doc"><h4>Der Kreislauf: So wurde ab 1930 regiert</h4><ol class="flow">' +
+      '<li>Der Reichskanzler hat keine Mehrheit. Der Reichstag lehnt sein Gesetz ab.</li>' +
+      '<li>Der Reichspräsident setzt den Inhalt als Notverordnung in Kraft (Art. 48 Abs. 2).</li>' +
+      '<li>Der Reichstag verlangt mit Mehrheit die Aufhebung (Art. 48 Abs. 3).</li>' +
+      '<li>Der Reichspräsident löst den Reichstag auf (Art. 25).</li>' +
+      '<li>Bis zur Neuwahl gibt es keinen Reichstag. Die Regierung regiert mit Notverordnungen weiter.</li></ol>' +
+      '<table class="prices"><thead><tr><th>Jahr</th><th>Gesetze des Reichstags</th><th>Notverordnungen</th></tr></thead><tbody>' +
+      '<tr><td>1930</td><td>98</td><td>noch selten</td></tr><tr><td>1931</td><td>34</td><td>42</td></tr><tr><td>1932</td><td>5</td><td>60</td></tr></tbody></table>' +
+      '<p class="src">Quelle: Hans Schneider: Das Ermächtigungsgesetz vom 24. März 1933, in: Vierteljahrshefte für Zeitgeschichte 1 (1953)</p></div>' +
+      '<div class="doc personal"><h4>Personalakte: Heinrich Brüning (Zentrum)</h4><p class="dates">Reichskanzler 30. März 1930 bis 30. Mai 1932</p>' +
+      '<p><b>Stütze:</b> das Vertrauen Hindenburgs. Nach der Wahl vom September 1930 duldete ihn die SPD, um eine noch weiter rechts stehende Regierung zu verhindern.</p>' +
+      '<p><b>Politik:</b> ein harter Sparkurs per Notverordnung. Steuern stiegen, Gehälter, Renten und Unterstützungen wurden gekürzt, die Not wuchs. Im Juli 1930 lehnte der Reichstag sein Haushaltsgesetz ab. Brüning setzte es als Notverordnung in Kraft. Der Reichstag verlangte mit 236 zu 221 Stimmen die Aufhebung, Hindenburg löste ihn sofort auf. Bei der Neuwahl im September 1930 stieg die NSDAP von 2,6 auf 18,3 %.</p>' +
+      '<p><b>Warum gescheitert?</b> Ende Mai 1932 entzog ihm Hindenburg das Vertrauen. Ostelbische Großgrundbesitzer und die Reichswehrführung um General von Schleicher hatten gegen ihn Stimmung gemacht. Ohne Hindenburg hatte Brüning keine Grundlage mehr.</p></div>' +
+      '<div class="doc personal"><h4>Personalakte: Franz von Papen (parteilos)</h4><p class="dates">Reichskanzler 1. Juni bis 17. November 1932</p>' +
+      '<p><b>Stütze:</b> nur Hindenburg. Im Reichstag unterstützte ihn kaum eine Partei, die Presse nannte seine Regierung das „Kabinett der Barone“.</p>' +
+      '<p><b>Politik:</b> Er hob das Verbot der SA auf, um die NSDAP für sich zu gewinnen, und ließ den Reichstag auflösen. Bei der Wahl im Juli 1932 wurde die NSDAP stärkste Partei. Am 20. Juli 1932 setzte er die SPD-geführte Regierung Preußens ab.</p>' +
+      '<p><b>Warum gescheitert?</b> Am 12. September 1932 sprach ihm der Reichstag mit 512 zu 42 Stimmen das Misstrauen aus. Hindenburg löste den Reichstag erneut auf (Art. 25). Auch nach der Wahl im November 1932 hatte Papen keine Mehrheit. Reichswehrminister Schleicher warnte, die Reichswehr könne einen Bürgerkrieg nicht beherrschen, falls Papen gegen die Verfassung weiterregiere. Papen trat zurück.</p>' +
+      '<p class="quote">„Auf Grund des Art. 25 der Reichsverfassung löse ich den Reichstag auf, weil die Gefahr besteht, daß der Reichstag die Aufhebung meiner Notverordnung vom 4. September cr. verlangt.“</p>' +
+      '<p class="src">Quelle: Verordnung des Reichspräsidenten vom 12. September 1932, abgedruckt in der Karlsruher Zeitung vom 13. September 1932 („cr.“ bedeutet: dieses Jahres)</p></div>' +
+      '<div class="doc personal"><h4>Personalakte: Kurt von Schleicher (General)</h4><p class="dates">Reichskanzler 3. Dezember 1932 bis 28. Januar 1933</p>' +
+      '<p><b>Stütze:</b> die Reichswehr und, zunächst, Hindenburg.</p>' +
+      '<p><b>Politik:</b> Er wollte eine „Querfront“ schmieden: die Gewerkschaften und den Flügel der NSDAP um Gregor Strasser. So hoffte er, die NSDAP zu spalten.</p>' +
+      '<p><b>Warum gescheitert?</b> Strasser trat schon am 8. Dezember 1932 von seinen Parteiämtern zurück, die NSDAP blieb geschlossen. Im Januar 1933 verlangte Schleicher, den Reichstag aufzulösen und die Neuwahl verfassungswidrig aufzuschieben. Hindenburg lehnte ab. Am 28. Januar 1933 trat Schleicher zurück.</p>' +
+      '<p class="src">Quellen: Bundeszentrale für politische Bildung, „Zerstörung der Demokratie 1930–1933“; LeMO (Deutsches Historisches Museum); German History in Documents and Images</p></div>',
+    tasks: [
+      { type: "sequence", q: "Bringe den Kreislauf in die richtige Reihenfolge, ohne nachzuschauen.",
+        items: ["Der Reichstag lehnt ein Gesetz der Regierung ab.", "Der Reichspräsident setzt den Inhalt als Notverordnung in Kraft.", "Der Reichstag verlangt die Aufhebung der Notverordnung.", "Der Reichspräsident löst den Reichstag auf.", "Bis zur Neuwahl regiert die Regierung mit Notverordnungen weiter."],
+        hint: "Am Anfang steht immer ein Streit zwischen Regierung und Reichstag." },
+      { type: "mc", q: "Welche Möglichkeit gab Artikel 48 Absatz 3 dem Reichstag?", options: ["Er konnte den Reichspräsidenten absetzen.", "Er konnte verlangen, dass Notverordnungen außer Kraft gesetzt werden.", "Er konnte selbst Notverordnungen erlassen."], answer: 1,
+        hints: { 0: "Lies den Wortlaut von Absatz 3 genau.", 2: "Lies den Wortlaut von Absatz 3 genau." } },
+      { type: "mc", hard: true, q: "Warum war dieses Recht des Reichstags am Ende fast wertlos?", options: ["Weil der Reichspräsident den Reichstag mit Artikel 25 einfach auflösen konnte, bevor oder sobald er die Aufhebung verlangte.", "Weil der Reichstag nur einmal im Jahr tagen durfte.", "Weil Notverordnungen nicht aufgehoben werden konnten."], answer: 0,
+        hints: { 1: "Davon steht nichts in der Verfassung. Lies Artikel 25 und die Auflösungsverordnung vom 12. September 1932.", 2: "Laut Absatz 3 konnten sie aufgehoben werden. Was tat der Reichspräsident, um das zu verhindern?" } },
+      { type: "mc", q: "Was zeigt die Tabelle für das Jahr 1932?", options: ["Der Reichstag beschloss noch fast so viele Gesetze wie 1930.", "Es gab weniger Notverordnungen als Gesetze.", "Der Reichstag beschloss nur noch 5 Gesetze, regiert wurde mit 60 Notverordnungen."], answer: 2,
+        hints: { 0: "Vergleiche 98 Gesetze (1930) mit der Zahl für 1932.", 1: "Vergleiche die beiden Spalten in der Zeile 1932." } },
+      { type: "assign", hard: true, q: "Wer war es? Ordne jede Aussage dem richtigen Kanzler zu.", people: ["Brüning", "Papen", "Schleicher"],
+        rows: [["Sein Sparkurs per Notverordnung verschärfte die Not. Die SPD duldete ihn trotzdem.", 0],
+               ["Der Reichstag sprach ihm mit 512 zu 42 Stimmen das Misstrauen aus.", 1],
+               ["Sein Plan, Gewerkschaften und einen Teil der NSDAP zu gewinnen, scheiterte.", 2],
+               ["Hindenburg entzog ihm im Mai 1932 das Vertrauen.", 0],
+               ["Er hob das SA-Verbot auf, um die NSDAP für sich zu gewinnen.", 1],
+               ["Er wollte die Neuwahl verfassungswidrig aufschieben. Hindenburg lehnte ab.", 2]],
+        hint: "Schau in den Abschnitt „Warum gescheitert?“ der drei Personalakten." },
+      { type: "multi", hard: true, q: "Was hatten alle drei Präsidialkabinette gemeinsam? Kreuze alle richtigen an.",
+        options: ["Sie hatten keine eigene Mehrheit im Reichstag.", "Sie wurden von der NSDAP unterstützt.", "Sie hingen vom Vertrauen Hindenburgs ab.", "Sie regierten mit Notverordnungen nach Artikel 48.", "Sie wurden durch eine Volksabstimmung beendet."],
+        answers: [0, 2, 3], hint: "Vergleiche die drei Abschnitte „Stütze“ in den Personalakten." },
+      { type: "mc", hard: true, q: "Was bedeutete das alles für die Demokratie?", options: ["Wichtige Entscheidungen fielen im kleinen Kreis um den Reichspräsidenten, nicht mehr im gewählten Reichstag.", "Der Reichstag wurde stärker, weil er öfter gewählt wurde.", "Nichts, denn die Verfassung erlaubte alle diese Schritte ausdrücklich."], answer: 0,
+        hints: { 1: "Häufige Neuwahlen ohne arbeitsfähigen Reichstag: Wer entschied in dieser Zeit?", 2: "Schon Brünings Notverordnung vom Juli 1930 und Schleichers Plan galten als verfassungswidrig. Und selbst Erlaubtes kann eine Demokratie aushöhlen." } }
+    ],
+    card: { title: "Regieren ohne Reichstag", text: "Mit Art. 48 und Art. 25 regierten Kanzler ohne Mehrheit am Parlament vorbei. Brüning, Papen und Schleicher scheiterten, weil sie nur vom Vertrauen Hindenburgs abhingen." },
+    reward: "Beweisstück 5 zeigt: Ab 1930 wurde Politik im Umfeld des Reichspräsidenten gemacht. Der gewählte Reichstag hatte kaum noch etwas zu sagen."
+  },
+  {
+    id: "machtuebergabe", emoji: "🏛️", name: "Machtübergabe und Ermächtigungsgesetz", year: "1933",
+    intro: "Beweisstück 6 sind Akten aus den ersten Monaten des Jahres 1933. Nach dem Scheitern Schleichers suchte das Umfeld Hindenburgs einen neuen Kanzler. In wenigen Wochen wurde aus der Republik eine Diktatur.",
+    tip: "Ordne die Ereignisse nach ihren Daten. Für die Fragen hilft dir der Kasten „Was am 23. März 1933 geschah“.",
+    doc: '<div class="doc"><h4>Januar 1933: Der Plan der Konservativen</h4><p>Am 4. Januar 1933 trafen sich Franz von Papen und Adolf Hitler im Haus des Kölner Bankiers Kurt von Schröder. Papen und das Umfeld Hindenburgs glaubten, sie könnten Hitler als Kanzler in einem Kabinett mit konservativer Mehrheit „einrahmen“. Im neuen Kabinett saßen neben Hitler tatsächlich nur zwei weitere Nationalsozialisten. Papen wurde Vizekanzler.</p></div>' +
+      '<div class="doc"><h4>Was am 23. März 1933 geschah</h4><p>Der Reichstag stimmte über das „Ermächtigungsgesetz“ ab. Es erlaubte der Regierung, Gesetze ohne den Reichstag zu erlassen. 444 Abgeordnete stimmten dafür, darunter auch Zentrum und Bayerische Volkspartei. Nur die 94 anwesenden SPD-Abgeordneten stimmten mit Nein. Die Abgeordneten der KPD konnten nicht abstimmen: Ihre Mandate waren schon annulliert, viele von ihnen waren verhaftet oder auf der Flucht.</p><p>Für das Gesetz war eine Zwei-Drittel-Mehrheit nötig. Nach der Wahl vom März 1933 hatte die NSDAP 288 von 647 Sitzen.</p>' +
+      '<p class="src">Quellen: Deutscher Bundestag, „Das Ermächtigungsgesetz vom 23. März 1933“ und „Reichstagswahlergebnisse 1919–1933“; LeMO (Deutsches Historisches Museum)</p></div>',
+    tasks: [
+      { type: "sequence", q: "Bringe die Ereignisse in die richtige Reihenfolge.",
+        items: ["März 1930: Die letzte Regierung mit Mehrheit im Reichstag zerbricht. Brüning regiert mit Notverordnungen.", "Juni 1932: Franz von Papen wird Reichskanzler.", "Dezember 1932: Kurt von Schleicher wird Reichskanzler.", "30. Januar 1933: Reichspräsident Hindenburg ernennt Hitler zum Reichskanzler.", "28. Februar 1933: Nach dem Reichstagsbrand setzt eine Notverordnung die Grundrechte außer Kraft.", "23. März 1933: Der Reichstag beschließt das Ermächtigungsgesetz."],
+        hint: "Achte auf die Jahreszahlen und dann auf die Monate.", hard: true },
+      { type: "mc", q: "Wie wurde Hitler Reichskanzler?", options: ["Er gewann eine absolute Mehrheit bei der Wahl.", "Reichspräsident Hindenburg ernannte ihn, unterstützt von konservativen Politikern.", "Er übernahm die Macht durch einen erfolgreichen Putsch."], answer: 1,
+        hints: { 0: "Erinnere dich an Beweisstück 4: Hatte die NSDAP je über 50 %?", 2: "Der Putsch von 1923 war gescheitert. Wer durfte nach der Verfassung den Kanzler ernennen?" } },
+      { type: "mc", q: "Wer stimmte am 23. März 1933 gegen das Ermächtigungsgesetz?", options: ["nur die SPD", "das Zentrum", "niemand"], answer: 0,
+        hints: { 1: "Lies im Kasten nach, wie das Zentrum abgestimmt hat.", 2: "Lies im Kasten nach: 94 Abgeordnete stimmten mit Nein." } },
+      { type: "mc", q: "Was bedeutete das Ermächtigungsgesetz?", options: ["Der Reichspräsident wurde abgeschafft.", "Es sollte alle zwei Jahre Neuwahlen geben.", "Die Regierung konnte Gesetze ohne den Reichstag erlassen. Die Demokratie war damit am Ende."], answer: 2,
+        hints: { 0: "Lies den zweiten Satz im Kasten.", 1: "Lies den zweiten Satz im Kasten." } },
+      { type: "mc", hard: true, q: "Brüning regierte mit Notverordnungen, und auch die Reichstagsbrandverordnung vom 28. Februar 1933 war eine Notverordnung. Auf welchen Artikel stützten sie sich?", options: ["Artikel 231", "Artikel 48", "Artikel 1"], answer: 1,
+        hints: { 0: "Artikel 231 stammt aus dem Vertrag von Versailles. Gesucht ist ein Artikel der Verfassung: Blatt 1.", 2: "Blättere zurück zu Blatt 1: Welcher Artikel erlaubte dem Reichspräsidenten Maßnahmen ohne den Reichstag?" } },
+      { type: "multi", hard: true, q: "Welche Aussagen über den 23. März 1933 stimmen? Kreuze alle richtigen an.",
+        options: ["Das Zentrum stimmte für das Ermächtigungsgesetz.", "Die NSDAP hätte das Gesetz auch allein beschließen können.", "Die Abgeordneten der KPD konnten nicht abstimmen.", "Das Gesetz wurde danach in einer Volksabstimmung bestätigt.", "Ohne die Stimmen anderer Parteien hätte die NSDAP keine Zwei-Drittel-Mehrheit gehabt."],
+        answers: [0, 2, 4], hint: "Lies den Kasten Satz für Satz. Rechne nach: Sind 288 von 647 Sitzen zwei Drittel?" },
+      { type: "multi", hard: true, q: "Blick zurück auf alle Blätter: Welche Belastungen gab es schon seit der Gründung der Republik 1919? Kreuze alle richtigen an.",
+        options: ["Schwächen der Verfassung", "Weltwirtschaftskrise", "Vertrag von Versailles und Dolchstoßlegende", "Präsidialkabinette"], answers: [0, 2],
+        hint: "Schau auf die Jahreszahlen im Inhaltsverzeichnis. Was begann erst 1929 oder 1930?" }
+    ],
+    card: { title: "Machtübergabe und Ermächtigungsgesetz", text: "Konservative Politiker hielten Hitler für lenkbar und verhalfen ihm ins Amt. Mit dem Ermächtigungsgesetz entmachtete sich der Reichstag selbst." },
+    reward: "Beweisstück 6 zeigt: Hitler kam nicht durch eine Mehrheit an die Macht. Er wurde ernannt, und in wenigen Wochen beseitigte seine Regierung die Demokratie."
+  }
+];
+
+
+/* =========================================================
+   ZUSTAND
+   ========================================================= */
+var state;
+function freshState() { return { v: 1, stage: "intro", done: [], pts: {}, hints: {}, elapsed: 0, finished: false, report: null }; }
+var sessionStart = Date.now();
+function maxScore() { var n = 0; STATIONS.forEach(function (s) { n += s.tasks.length; }); return n * 10; }
+function score() { var s = 0, k; for (k in state.pts) s += state.pts[k]; for (k in state.hints) if (state.hints[k]) s -= 5; return Math.max(0, s); }
+function percent() { return Math.round(score() / maxScore() * 100); }
+function save() {
+  state.elapsed += Date.now() - sessionStart; sessionStart = Date.now();
+  var copy = JSON.parse(JSON.stringify(state));
+  if (copy.report && copy.report.text) copy.report.text = copy.report.text.slice(0, 1200);
+  LA.store.save(APP_ID, copy); LA.report(percent(), false);
+}
+function setPts(key, wrong, opts) {
+  opts = opts || {};
+  var p = opts.revealed ? 0 : opts.binary ? (wrong === 0 ? 10 : 2) : ([10, 6, 3][wrong] !== undefined ? [10, 6, 3][wrong] : 1);
+  state.pts[key] = p; updateBar(); return p;
+}
+function updateBar(where) { $("#points").textContent = score(); if (where) $("#where").textContent = where; }
+
+/* =========================================================
+   ANZEIGE
+   ========================================================= */
+var main = $("#main");
+function show(nodes) {
+  main.innerHTML = "";
+  var t = $("#la-toast"); if (t) t.classList.remove("show");
+  nodes.forEach(function (n) { if (n) main.appendChild(n); });
+  window.scrollTo(0, 0);
+  var f = main.querySelector("h1, h2"); if (f) { f.setAttribute("tabindex", "-1"); f.focus({ preventScroll: true }); }
+}
+function note(html, sig) { return h("div", { class: "note" }, [h("div", { html: html }), h("span", { class: "sig", text: sig || "– Dr. Roth, Archivleitung" })]); }
+function feedback(el, kind, html) { el.className = "feedback show " + kind; el.innerHTML = html; }
+function shake(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+function today() { var d = new Date(); return d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear(); }
+
+/* ---------- Aktendeckel ---------- */
+function screenIntro(saved) {
+  $("#topbar").hidden = true;
+  var cover;
+  function openFile(fn) {
+    cover.classList.add("opening");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setTimeout(fn, reduce ? 0 : 750);
+  }
+  var actions = [];
+  if (saved && !saved.finished && saved.stage !== "intro") {
+    actions.push(note("Du hast diese Akte schon bearbeitet: <b>" + saved.done.length + " von " + STATIONS.length + "</b> Blättern sind ausgewertet."));
+    actions.push(h("div", { class: "row" }, [
+      h("button", { class: "string-btn", type: "button", onclick: function () { openFile(function () { state = saved; sessionStart = Date.now(); screenMap(); }); } }, ["Weiterarbeiten"]),
+      h("button", { class: "btn ghost", type: "button", onclick: function () { LA.store.clear(APP_ID); screenIntro(null); } }, ["Neu beginnen"])
+    ]));
+  } else {
+    actions.push(h("button", { class: "string-btn", type: "button", onclick: function () {
+      openFile(function () { state = freshState(); state.stage = "map"; sessionStart = Date.now(); save(); screenMap(); });
+    } }, ["Akte öffnen"]));
+  }
+  cover = h("section", { class: "cover", "aria-label": "Aktendeckel" }, [
+    h("span", { class: "stamp", text: "ARCHIVGUT" }),
+    h("div", { class: "label-card" }, [
+      h("div", { class: "row-l" }, [h("span", { text: "Registratur" }), h("span", { text: "Abt. Zeitgeschichte" })]),
+      h("div", { class: "row-l" }, [h("span", { text: "Aktenzeichen" }), h("span", { text: "W 1919/33" })]),
+      h("div", { class: "row-l" }, [h("span", { text: "Betreff" }), h("span", { text: "Scheitern der Weimarer Republik" })]),
+      h("div", { class: "row-l" }, [h("span", { text: "Umfang" }), h("span", { text: STATIONS.length + " Blatt, 1 Bericht" })]),
+      h("div", { class: "row-l" }, [h("span", { text: "Bearbeitung" }), h("span", { text: "du (Klasse 9)" })])
+    ]),
+    h("h1", { text: "Akte Weimar" }),
+    h("p", { class: "sub", text: "Warum scheiterte die erste deutsche Demokratie?" }),
+    note("Ein Museum plant eine Ausstellung über die Weimarer Republik. Bitte werte die sechs Beweisstücke dieser Akte aus und schreib mir am Ende <b>deine Einschätzung</b>: Warum hielt die Demokratie nur 14 Jahre?<br>Wenn du feststeckst, frag mich um Rat. Jeder Rat kostet dich 5 Punkte."),
+    h("div", {}, actions)
+  ]);
+  show([h("div", { class: "desk-stage" }, [cover])]);
+}
+
+/* ---------- Inhaltsverzeichnis ---------- */
+function screenMap() {
+  state.stage = "map"; save();
+  $("#topbar").hidden = false; updateBar("Inhaltsverzeichnis");
+  var next = state.done.length;
+  var items = STATIONS.map(function (s, i) {
+    var isDone = state.done.indexOf(s.id) > -1, isOpen = i === next;
+    return h("li", { class: isOpen ? "current" : "" }, [h("button", { type: "button", disabled: !isDone && !isOpen ? true : null,
+      onclick: function () { if (isOpen) screenStation(i); else if (isDone) LA.toast("Blatt " + (i + 1) + " ist bereits abgeheftet."); } }, [
+      h("span", { class: "blatt", text: "Blatt " + (i + 1) }),
+      h("span", { class: "titel" }, [s.name, h("small", { text: s.year })]),
+      isDone ? h("span", { class: "status done", text: "AUSGEWERTET" }) : isOpen ? h("span", { class: "status go", text: "Jetzt bearbeiten" }) : h("span", { class: "status", text: "noch gesperrt" })
+    ])]);
+  });
+  var finalOpen = state.done.length === STATIONS.length;
+  items.push(h("li", { class: finalOpen ? "current" : "" }, [h("button", { type: "button", disabled: finalOpen ? null : true, onclick: function () { if (finalOpen) screenReport(); } }, [
+    h("span", { class: "blatt", text: "Blatt " + (STATIONS.length + 1) }),
+    h("span", { class: "titel" }, ["Abschlussbericht", h("small", { text: "deine Einschätzung" })]),
+    finalOpen ? h("span", { class: "status go", text: "Jetzt schreiben" }) : h("span", { class: "status", text: "noch gesperrt" })
+  ])]));
+  var msg = state.done.length === 0 ? "Fang mit Blatt 1 an. Die Blätter sind nach der Zeit geordnet."
+    : state.done.length < STATIONS.length ? "Gut. Das nächste Blatt liegt für dich bereit."
+    : "Alle Blätter sind ausgewertet. Jetzt brauche ich deinen Abschlussbericht.";
+  show([
+    h("section", { class: "folder" }, [
+      h("span", { class: "tab", text: "Akte W 1919/33" }),
+      h("div", { class: "sheet" }, [
+        h("h2", { text: "Inhaltsverzeichnis" }),
+        h("ol", { class: "toc" }, items),
+        note(msg)
+      ])
+    ]),
+    h("h3", { class: "box-title", text: "Karteikasten: deine Ursachen-Karten (" + state.done.length + " von " + STATIONS.length + ")" }),
+    causeCards()
+  ]);
+}
+function causeCards() {
+  return h("div", { class: "cards" }, STATIONS.map(function (s) {
+    return state.done.indexOf(s.id) > -1 ? h("div", { class: "cause" }, [h("b", { text: s.card.title }), s.card.text]) : h("div", { class: "cause empty", "aria-hidden": "true", text: "." });
+  }));
+}
+
+/* ---------- Blatt (Station) ---------- */
+function screenStation(idx) {
+  var st = STATIONS[idx];
+  state.stage = "station";
+  Object.keys(state.pts).forEach(function (k) { if (k.indexOf(st.id + "-") === 0) delete state.pts[k]; });
+  save(); updateBar("Blatt " + (idx + 1) + " von " + STATIONS.length);
+  var total = st.tasks.length, solved = 0;
+  var exitBtn = h("button", { class: "btn primary", type: "button", disabled: true, onclick: function () { finishStation(idx); } }, ["Blatt abheften"]);
+  function onSolved() { solved++; if (solved >= total) { exitBtn.disabled = false; LA.toast("Prüfbogen vollständig. Du kannst das Blatt jetzt abheften."); } save(); }
+  var tipBox = h("div");
+  var tipBtn = h("button", { class: "btn ghost", type: "button", onclick: function () {
+    if (!state.hints[st.id]) { state.hints[st.id] = true; updateBar(); save(); }
+    tipBox.innerHTML = ""; tipBox.appendChild(note(st.tip)); tipBtn.textContent = "Rat erhalten (−5 Punkte)"; tipBtn.disabled = true;
+  } }, [state.hints[st.id] ? "Rat erhalten (−5 Punkte)" : "Dr. Roth um Rat fragen (−5 Punkte)"]);
+  var form = h("div", { class: "sheet form" }, [h("h2", { text: "Prüfbogen zu Blatt " + (idx + 1) })]);
+  st.tasks.forEach(function (t, ti) { form.appendChild(RENDER[t.type](t, st.id + "-" + ti, onSolved, ti)); });
+  show([
+    h("section", { class: "folder" }, [
+      h("span", { class: "tab", text: "Blatt " + (idx + 1) + " – " + st.year }),
+      h("div", { class: "sheet" }, [
+        h("h2", { text: st.name }),
+        h("p", { class: "typed", text: st.intro }),
+        h("div", { html: typeof st.doc === "function" ? st.doc() : st.doc }),
+        h("div", { class: "row no-print" }, [tipBtn, h("button", { class: "btn ghost", type: "button", onclick: screenMap }, ["Zum Inhaltsverzeichnis"])]),
+        tipBox
+      ]),
+      form,
+      h("div", { class: "row exit-row" }, [exitBtn])
+    ])
+  ]);
+}
+function finishStation(idx) {
+  var st = STATIONS[idx];
+  if (state.done.indexOf(st.id) === -1) state.done.push(st.id);
+  save(); updateBar();
+  modal([h("div", { class: "sheet" }, [
+    h("span", { class: "stamp thump", text: "AUSGEWERTET" }),
+    h("h2", { id: "modalTitle", text: "Blatt " + (idx + 1) + " abgeheftet" }),
+    h("p", { text: st.reward }),
+    h("p", { class: "typed", text: "Neue Karteikarte für deinen Karteikasten:" }),
+    h("div", { class: "cards" }, [h("div", { class: "cause" }, [h("b", { text: st.card.title }), st.card.text])]),
+    h("div", { class: "row end", style: "margin-top:18px" }, [h("button", { class: "btn primary", type: "button", onclick: function () { closeModal(); screenMap(); } }, ["Zum Inhaltsverzeichnis"])])
+  ])]);
+}
+
+/* ---------- Abschlussbericht ---------- */
+function screenReport() {
+  state.stage = "report"; save(); updateBar("Blatt " + (STATIONS.length + 1) + ": Bericht");
+  var r = state.report || {};
+  var pieces = STATIONS.map(function (s) { return s.card.title; });
+  var zone = h("div", { class: "answer-zone", "data-placeholder": "Tippe die Karten an, die wichtigste zuerst." });
+  zone.style.flexDirection = "column"; zone.style.alignItems = "stretch";
+  var chips = h("div", { class: "chips" }); chips.style.flexDirection = "column";
+  pieces.forEach(function (p) { chips.appendChild(makeChip(p, zone)); });
+  var pos = r.position || null, posBtns = [];
+  var posBox = h("div", { class: "opts position" });
+  ["Ja, sie war von Anfang an zum Scheitern verurteilt.", "Teilweise: Es gab schwere Belastungen, aber das Ende war nicht zwangsläufig.", "Nein, sie hätte überleben können."].forEach(function (label) {
+    var b = h("button", { class: "opt" + (pos === label ? " sel" : ""), type: "button", onclick: function () { pos = label; posBtns.forEach(function (x) { x.classList.toggle("sel", x === b); }); } }, [label]);
+    posBtns.push(b); posBox.appendChild(b);
+  });
+  var ta = h("textarea", { class: "report", "aria-label": "Deine Begründung" }); ta.value = r.text || "";
+  var fb = h("div", { class: "feedback", role: "status" });
+  var go = h("button", { class: "btn primary", type: "button", onclick: function () {
+    var order = LA.$$(".chip", zone).map(function (c) { return c.textContent; });
+    if (order.length < pieces.length) { feedback(fb, "tip", "Ordne zuerst alle Karteikarten."); return; }
+    if (!pos) { feedback(fb, "tip", "Kreuze deine Einschätzung an."); return; }
+    if (ta.value.trim().length < 60) { feedback(fb, "tip", "Begründe deine Einschätzung in zwei bis drei ganzen Sätzen."); return; }
+    state.report = { order: order, position: pos, text: ta.value.trim() };
+    screenEnd();
+  } }, ["Bericht unterschreiben und abgeben"]);
+  show([
+    h("section", { class: "folder" }, [
+      h("span", { class: "tab", text: "Blatt " + (STATIONS.length + 1) + " – Bericht" }),
+      h("div", { class: "sheet form" }, [
+        h("h2", { text: "Abschlussbericht" }),
+        note("Fachleute sind sich einig: Es gab nicht nur eine Ursache. Jetzt zählt deine Einschätzung. Welche Ursachen wiegen für dich am schwersten?"),
+        h("h3", { text: "1. Ordne deine Karteikarten nach ihrer Bedeutung" }),
+        h("p", { class: "starters", text: "Hier gibt es keine falsche Lösung. Die wichtigste Ursache kommt nach oben." }),
+        zone, chips,
+        h("div", { class: "row", style: "margin:8px 0 6px" }, [h("button", { class: "btn ghost", type: "button", onclick: function () { resetZone(zone, chips); } }, ["Zurücksetzen"])]),
+        h("h3", { text: "2. War die Weimarer Republik von Anfang an zum Scheitern verurteilt?" }),
+        posBox,
+        h("h3", { text: "3. Begründe deine Einschätzung" }),
+        h("p", { class: "starters", text: "Nutze mindestens zwei Ursachen. Satzanfänge: Ich denke, dass …, weil … / Besonders wichtig war …, denn … / Andererseits …" }),
+        ta, fb,
+        h("div", { class: "row end", style: "margin-top:14px" }, [go])
+      ])
+    ])
+  ]);
+}
+
+/* ---------- Ende ---------- */
+function reportText() {
+  var r = state.report;
+  return "AKTE WEIMAR – ABSCHLUSSBERICHT\nAbgegeben am " + today() + "\n\nWichtigste Ursachen (Rangfolge):\n" +
+    r.order.map(function (o, i) { return (i + 1) + ". " + o; }).join("\n") +
+    "\n\nMeine Einschätzung: " + r.position + "\n\nBegründung:\n" + r.text;
+}
+function screenEnd() {
+  state.finished = true; state.stage = "end";
+  state.elapsed += Date.now() - sessionStart; sessionStart = Date.now();
+  var pct = percent(), txt = reportText();
+  LA.store.save(APP_ID, state);
+  if (LA.scorm.active) LA.scorm.set("cmi.comments", txt.slice(0, 4000));
+  LA.scorm.exitMode = ""; LA.report(pct, true, 50);
+  $("#topbar").hidden = true;
+  var copyBtn = h("button", { class: "btn primary", type: "button", onclick: function () {
+    var done = function () { LA.toast("Bericht kopiert. Füge ihn dort ein, wo deine Lehrkraft es möchte."); };
+    try { navigator.clipboard.writeText(txt).then(done, function () { fallbackCopy(txt); done(); }); } catch (e) { fallbackCopy(txt); done(); }
+  } }, ["Bericht kopieren"]);
+  show([
+    h("section", { class: "folder" }, [
+      h("span", { class: "tab", text: "Akte W 1919/33" }),
+      h("div", { class: "sheet" }, [
+        h("span", { class: "stamp red thump closing-stamp", text: "AKTE GESCHLOSSEN" }),
+        h("h2", { text: "Dein Bericht" }),
+        h("div", { class: "stats" }, [
+          h("span", { text: score() + " von " + maxScore() + " Punkten (" + pct + " %)" }),
+          h("span", { text: "Bearbeitungszeit: " + Math.max(1, Math.round(state.elapsed / 60000)) + " Min." })
+        ]),
+        h("div", { class: "result-box", text: txt }),
+        h("div", { class: "row no-print", style: "margin-top:16px" }, [copyBtn, h("button", { class: "btn ghost", type: "button", onclick: function () { window.print(); } }, ["Drucken"])])
+      ]),
+      h("div", { class: "sheet epilog" }, [
+        h("h3", { text: "Was danach geschah" }),
+        h("p", { text: "Mit dem Ermächtigungsgesetz war die Demokratie beseitigt. Es folgten zwölf Jahre Diktatur: Verfolgung politischer Gegner, Entrechtung und Ermordung der europäischen Jüdinnen und Juden sowie vieler anderer Menschen, und ein Weltkrieg mit Millionen Toten." }),
+        h("p", { text: "Die Bundesrepublik hat aus Weimar gelernt: Das Grundgesetz von 1949 sieht das konstruktive Misstrauensvotum vor und gibt dem Bundespräsidenten kein Notverordnungsrecht. Im Wahlrecht gibt es dazu die 5-%-Hürde." }),
+        h("div", { class: "row no-print" }, [h("button", { class: "btn ghost", type: "button", onclick: function () { LA.store.clear(APP_ID); location.reload(); } }, ["Akte neu beginnen"])])
+      ])
+    ])
+  ]);
+}
+function fallbackCopy(txt) { var t = h("textarea", {}); t.value = txt; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); } catch (e) {} t.remove(); }
+
+/* =========================================================
+   AUFGABENTYPEN
+   ========================================================= */
+var RENDER = {};
+function qHead(t, i) {
+  return h("div", { class: "q", html: "<span class='num'>" + (i + 1) + ".</span> " + t.q + (t.hard ? " <span class='hard-mark'>knifflig!</span>" : "") });
+}
+RENDER.mc = function (t, key, done, i) {
+  var wrong = 0, box = h("div", { class: "task" });
+  var fb = h("div", { class: "feedback", role: "status" }), opts = h("div", { class: "opts" });
+  t.options.forEach(function (o, oi) {
+    var b = h("button", { class: "opt", type: "button", onclick: function () {
+      if (box.classList.contains("done")) return;
+      if (oi === t.answer) {
+        b.classList.add("right"); LA.$$(".opt", opts).forEach(function (x) { x.disabled = true; });
+        box.classList.add("done");
+        var p = setPts(key, wrong, { binary: t.binary });
+        feedback(fb, "ok", "Richtig. +" + p + " Punkte"); done();
+      } else {
+        wrong++; b.classList.add("wrong"); b.disabled = true;
+        feedback(fb, "tip", (t.hints && t.hints[oi]) || "Noch nicht. Lies die Quelle noch einmal.");
+      }
+    } }, [o]);
+    opts.appendChild(b);
+  });
+  box.appendChild(qHead(t, i));
+  box.appendChild(opts); box.appendChild(fb);
+  return box;
+};
+function makeChip(label, zone) {
+  var c = h("button", { class: "chip", type: "button" }, [label]);
+  c.addEventListener("click", function () {
+    if (zone.classList.contains("right")) return;
+    if (c.parentNode === zone) c._home.appendChild(c); else { c._home = c.parentNode; zone.appendChild(c); }
+    zone.classList.remove("wrong");
+  });
+  return c;
+}
+function resetZone(zone, chips) { LA.$$(".chip", zone).forEach(function (c) { (c._home || chips).appendChild(c); }); zone.classList.remove("wrong", "right"); }
+RENDER.sequence = function (t, key, done, i) {
+  var wrong = 0, box = h("div", { class: "task" }), fb = h("div", { class: "feedback", role: "status" });
+  var zone = h("div", { class: "answer-zone", "data-placeholder": "Tippe die Ereignisse an: zuerst … dann …" });
+  zone.style.flexDirection = "column"; zone.style.alignItems = "stretch";
+  var chips = h("div", { class: "chips" }); chips.style.flexDirection = "column";
+  var sh = LA.shuffle(t.items); if (sh.join("|") === t.items.join("|")) sh = sh.slice(1).concat(sh[0]);
+  sh.forEach(function (w) { chips.appendChild(makeChip(w, zone)); });
+  var reveal = h("button", { class: "btn ghost", type: "button", hidden: true, onclick: function () {
+    resetZone(zone, chips);
+    t.items.forEach(function (w) { var c = LA.$$(".chip", chips).filter(function (x) { return x.textContent === w; })[0]; if (c) { c._home = chips; zone.appendChild(c); } });
+    finish(true);
+  } }, ["Lösung zeigen"]);
+  function finish(revealed) {
+    zone.classList.add("right"); box.classList.add("done"); check.disabled = true; reset.disabled = true; reveal.hidden = true; chips.hidden = true;
+    var p = setPts(key, wrong, { revealed: revealed });
+    feedback(fb, "ok", revealed ? "So ist die richtige Reihenfolge. Lies sie dir noch einmal durch." : "Richtig. +" + p + " Punkte"); done();
+  }
+  var check = h("button", { class: "btn", type: "button", onclick: function () {
+    var got = LA.$$(".chip", zone).map(function (c) { return c.textContent; });
+    if (got.length < t.items.length) { feedback(fb, "tip", "Ordne alle Ereignisse ein."); return; }
+    if (got.join("|") === t.items.join("|")) { finish(false); return; }
+    var fw = 0; while (got[fw] === t.items[fw]) fw++;
+    wrong++; shake(zone, "wrong");
+    feedback(fb, "bad", (fw === 0 ? "Noch nicht. Schon das erste Ereignis stimmt nicht. " : "Noch nicht. Die ersten " + fw + " Ereignisse stimmen. ") + t.hint);
+    if (wrong >= 3) reveal.hidden = false;
+  } }, ["Prüfen"]);
+  var reset = h("button", { class: "btn ghost", type: "button", onclick: function () { resetZone(zone, chips); fb.classList.remove("show"); } }, ["Zurücksetzen"]);
+  box.appendChild(qHead(t, i));
+  box.appendChild(zone); box.appendChild(chips);
+  box.appendChild(h("div", { class: "row", style: "margin-top:10px" }, [check, reset, reveal])); box.appendChild(fb);
+  return box;
+};
+
+RENDER.multi = function (t, key, done, i) {
+  var wrong = 0, lastSig = "", box = h("div", { class: "task multi" }), fb = h("div", { class: "feedback", role: "status" });
+  var opts = h("div", { class: "opts" }), btns = [];
+  t.options.forEach(function (o, oi) {
+    var b = h("button", { class: "opt", type: "button", "aria-pressed": "false", onclick: function () {
+      if (box.classList.contains("done")) return;
+      b.classList.toggle("sel"); b.setAttribute("aria-pressed", b.classList.contains("sel") ? "true" : "false");
+      LA.$$(".opt", opts).forEach(function (x) { x.classList.remove("wrong", "missed"); });
+    } }, [o]);
+    btns.push(b); opts.appendChild(b);
+  });
+  function finish(revealed) {
+    btns.forEach(function (b, bi) {
+      var isAns = t.answers.indexOf(bi) > -1;
+      b.classList.toggle("sel", isAns); b.classList.toggle("right", isAns); b.classList.remove("wrong", "missed"); b.disabled = true;
+    });
+    box.classList.add("done"); check.disabled = true; reveal.hidden = true;
+    var p = setPts(key, wrong, { revealed: revealed });
+    feedback(fb, "ok", revealed ? "Hier sind die richtigen Kreuze. Lies die Aussagen noch einmal." : "Alles richtig angekreuzt. +" + p + " Punkte"); done();
+  }
+  var check = h("button", { class: "btn", type: "button", onclick: function () {
+    var sel = btns.map(function (b, bi) { return b.classList.contains("sel") ? bi : -1; }).filter(function (x) { return x > -1; });
+    if (!sel.length) { feedback(fb, "tip", "Kreuze mindestens eine Aussage an."); return; }
+    var hits = sel.filter(function (x) { return t.answers.indexOf(x) > -1; }).length;
+    var falsePos = sel.length - hits;
+    if (hits === t.answers.length && falsePos === 0) { finish(false); return; }
+    var sig = sel.join(",");
+    if (sig !== lastSig) wrong++;
+    lastSig = sig;
+    var msg = "Noch nicht. ";
+    if (falsePos) msg += falsePos === 1 ? "Ein Kreuz ist falsch. " : falsePos + " Kreuze sind falsch. ";
+    if (hits < t.answers.length) msg += t.answers.length - hits === 1 ? "Es fehlt noch eine richtige Aussage. " : "Es fehlen noch " + (t.answers.length - hits) + " richtige Aussagen. ";
+    if (wrong >= 2) {
+      btns.forEach(function (b, bi) { if (b.classList.contains("sel") && t.answers.indexOf(bi) === -1) b.classList.add("wrong"); });
+      msg += "Die falschen Kreuze sind jetzt markiert. ";
+    }
+    feedback(fb, "bad", msg + t.hint);
+    if (wrong >= 3) reveal.hidden = false;
+  } }, ["Prüfen"]);
+  var reveal = h("button", { class: "btn ghost", type: "button", hidden: true, onclick: function () { finish(true); } }, ["Lösung zeigen"]);
+  box.appendChild(qHead(t, i)); box.appendChild(opts);
+  box.appendChild(h("div", { class: "row", style: "margin-top:8px" }, [check, reveal])); box.appendChild(fb);
+  return box;
+};
+
+RENDER.assign = function (t, key, done, i) {
+  var wrong = 0, lastSig = "", box = h("div", { class: "task" }), fb = h("div", { class: "feedback", role: "status" });
+  var picks = t.rows.map(function () { return -1; }), rows = [];
+  var list = h("div", {});
+  t.rows.forEach(function (r, ri) {
+    var btns = t.people.map(function (name, pi) {
+      var b = h("button", { class: "who-btn", type: "button", "aria-pressed": "false", onclick: function () {
+        if (box.classList.contains("done")) return;
+        picks[ri] = pi; row.classList.remove("wrong");
+        btns.forEach(function (x, xi) { x.classList.toggle("sel", xi === pi); x.setAttribute("aria-pressed", xi === pi ? "true" : "false"); });
+      } }, [name]);
+      return b;
+    });
+    var row = h("div", { class: "assign-row" }, [h("span", { text: r[0] }), h("span", { class: "who-btns" }, btns)]);
+    rows.push({ el: row, btns: btns }); list.appendChild(row);
+  });
+  function finish(revealed) {
+    t.rows.forEach(function (r, ri) {
+      picks[ri] = r[1];
+      rows[ri].btns.forEach(function (x, xi) { x.classList.toggle("sel", xi === r[1]); x.disabled = true; });
+      rows[ri].el.classList.remove("wrong"); rows[ri].el.classList.add("right");
+    });
+    box.classList.add("done"); check.disabled = true; reveal.hidden = true;
+    var p = setPts(key, wrong, { revealed: revealed });
+    feedback(fb, "ok", revealed ? "Hier ist die richtige Zuordnung. Lies die Personalakten noch einmal." : "Alles richtig zugeordnet. +" + p + " Punkte"); done();
+  }
+  var check = h("button", { class: "btn", type: "button", onclick: function () {
+    if (picks.indexOf(-1) > -1) { feedback(fb, "tip", "Ordne jede Aussage einem Kanzler zu."); return; }
+    var ok = t.rows.filter(function (r, ri) { return picks[ri] === r[1]; }).length;
+    if (ok === t.rows.length) { finish(false); return; }
+    var sig = picks.join(","); if (sig !== lastSig) wrong++; lastSig = sig;
+    var msg = "Noch nicht. " + ok + " von " + t.rows.length + " Zuordnungen stimmen. ";
+    if (wrong >= 2) {
+      t.rows.forEach(function (r, ri) { rows[ri].el.classList.toggle("wrong", picks[ri] !== r[1]); });
+      msg += "Die falschen sind jetzt rot markiert. ";
+    }
+    feedback(fb, "bad", msg + t.hint);
+    if (wrong >= 3) reveal.hidden = false;
+  } }, ["Prüfen"]);
+  var reveal = h("button", { class: "btn ghost", type: "button", hidden: true, onclick: function () { finish(true); } }, ["Lösung zeigen"]);
+  box.appendChild(qHead(t, i)); box.appendChild(list);
+  box.appendChild(h("div", { class: "row", style: "margin-top:10px" }, [check, reveal])); box.appendChild(fb);
+  return box;
+};
+
+/* ---------- Modal ---------- */
+function modal(nodes) { var tt = $("#la-toast"); if (tt) tt.classList.remove("show"); var b = $("#modalBox"); b.innerHTML = ""; nodes.forEach(function (n) { b.appendChild(n); }); $("#modal").classList.add("show"); var x = b.querySelector("button"); if (x) x.focus(); }
+function closeModal() { $("#modal").classList.remove("show"); }
+
+/* ---------- Start ---------- */
+LA.scorm.init();
+state = freshState();
+var saved = LA.store.load(APP_ID);
+if (saved && saved.finished) saved = null;
+screenIntro(saved);
+})();
+</script>
+</body>
+</html>
